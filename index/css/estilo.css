@@ -1,0 +1,120 @@
+html, body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background: #72ABB8;
+
+}
+.col-form-label{
+    position: absolute;
+    width: 300px;
+    height: 56px;
+    left: 50%;
+    top: 28%;
+
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 90;
+    font-size: 18pt;
+    line-height: 56px;
+
+    color: #000000;
+
+}
+.form-check-label-email{
+    position: absolute;
+    width: 146px;
+    height: 56px;
+    left: 155px;
+    top: 315px;
+
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 90;
+    font-size: 18pt;
+    line-height: 56px;
+
+    color: #000000;
+}
+.form-check-label-senha{
+    position: absolute;
+    width: 157px;
+    height: 56px;
+    left: 144px;
+    top: 484px;
+
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 90;
+    font-size: 18pt;
+    line-height: 56px;
+
+    color: #000000;
+}
+
+.container-input{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 60%;
+    height: 88px;
+    left: 28%;
+    top: 50%;
+
+    background: #D9D9D9;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+.container-input-sec{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 60%;
+    height: 88px;
+    left: 28%;
+    top: 77%;
+
+    background: #D9D9D9;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+.col-sm-10{
+    text-align: center;
+}
+
+.form-check-input-submit{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 493px;
+    height: 84px;
+    left: 474px;
+    top: 782px;
+
+    background: #E3E3E3;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+
+    cursor: pointer;
+}
+.form-check-input-submit:active {
+        transform: scale(0.98);
+        /* Scaling button to 0.98 to its original size */
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+        /* Lowering the shadow */
+}
+
+.footer{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    left: 0px;
+    top: 924px;
+
+    background: #000000;
+}
