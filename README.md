@@ -1,2 +1,0 @@
-# Academia
- Projeto academia
