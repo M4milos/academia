@@ -5,6 +5,7 @@ html, body{
 
     background: #72ABB8;
 
+        overflow-x: hidden;
 }
 .col-form-label{
     position: absolute;

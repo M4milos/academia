@@ -32,7 +32,7 @@
                 <label class="form-check-label-senha" for="senha">
                     Senha: 
                 </label>
-                <input class="container-input-sec" id="senha" name="senha" type="password" required>
+                <input class="container-input-sec" id="senha" name="senha" type="password" autocomplete="on" required>
             </div><br>
             <input class="form-check-input-submit" type="submit" id="Entrar" value="Entrar" onclick="ValidarEmail(),ValidarSenha()">
         </div>
