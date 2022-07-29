@@ -1,12 +1,13 @@
 html, body{
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 80%;
 
     background: #72ABB8;
 
-        overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
+
 .col-form-label{
     position: absolute;
     width: 300px;
@@ -59,7 +60,7 @@ html, body{
 
     position: absolute;
     width: 60%;
-    height: 88px;
+    height: 50px;
     left: 28%;
     top: 50%;
 
@@ -73,7 +74,7 @@ html, body{
 
     position: absolute;
     width: 60%;
-    height: 88px;
+    height: 50px;
     left: 28%;
     top: 77%;
 
@@ -85,6 +86,7 @@ html, body{
 
 .col-sm-10{
     text-align: center;
+    overflow: hidden;
 }
 
 .form-check-input-submit{
