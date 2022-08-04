@@ -5,9 +5,7 @@
     * @acess public
     * @return boolean
 */
-require_once('banco.class.php');
-require_once "../conf/default.inc.php";
-require_once "../conf/Conexao.php";
+require_once('autoload.class.php');
 
 class Based extends BancoDados{
     private $id;

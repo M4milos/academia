@@ -1,5 +1,6 @@
 <?php
-    require_once('../../classes/autoload.class.php')
+    require_once('../../classes/autoload.class.php');
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -11,13 +12,21 @@
     <link rel="stylesheet" href="../css/estilo.css">
     <?php
         $email = isset($_POST['email']) ? $_POST['email'] : "";
+        $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
+        
+        $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
 
-        //echo $email;
+        //echo "Email: ".$email." Senha: ".$senha;
+
+        //echo $_SESSION['usuario'];
         
     ?>
 </head>
 <body>
-    <form method="post">
+    <header>
+        <h1>Logado como: <?php if(!empty($_SESSION['usuario'])){echo $_SESSION['usuario'];} else{echo "Visitante";}?></h1>
+    </header>
+    <form method="post" action="../processa/processa.php">
         <legend class="col-form-label">
             Entrar no sistema
         </legend>
@@ -26,15 +35,16 @@
                 <label class="form-check-label-email" for="email">
                     E-mail: 
                 </label>
-                <input class="container-input" id="email" name="email" type="text" required>
+                <input class="container-input" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
             </div><br>
             <div>
                 <label class="form-check-label-senha" for="senha">
                     Senha: 
                 </label>
-                <input class="container-input-sec" id="senha" name="senha" type="password" autocomplete="on" required>
+                <input class="container-input-sec" id="senha" name="senha" type="password" autocomplete="on" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
             </div><br>
-            <input class="form-check-input-submit" type="submit" id="Entrar" value="Entrar" onclick="ValidarEmail(),ValidarSenha()">
+            <input class="form-check-input-submit" type="submit" name="acao" id="Entrar" value="Entrar" onclick="">
+            <input class="" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">
         </div>
     </form>
     <footer class="footer"></footer>

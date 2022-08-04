@@ -1,6 +1,5 @@
 <?php
 class BancoDados{
-
     /* 
         * Classe baseada
         * @acess public
@@ -8,7 +7,7 @@ class BancoDados{
     */
 
     public static function Instancia(){ // Cria conexão com o banco de dados e instancia.
-            require_once "../conf/Conexao.php"; // Requerimento da conexão PDO.
+            require_once "conexao.class.php"; // Requerimento da conexão PDO.
         return Conexao::getInstance(); // Retornando uma instancia / conexão.
     }
 
@@ -54,6 +53,15 @@ class BancoDados{
             //var_dump($comando);
         // Retornando uma matriz ou vetor multidimensional para apresentação de dados.
         return $comando->fetchAll(); 
+    }
+
+    public static function EfetuaLogin($sql, $param=array()){
+        $pdo = Conexao::getInstance();
+                $stmt = $pdo->prepare($sql);
+                $stmt = self::Vincular($stmt,$param);
+                $stmt->execute();
+                $dado = $stmt->fetch();
+            return $dado;
     }
 }
 ?>

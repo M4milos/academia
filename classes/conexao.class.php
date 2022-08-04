@@ -1,5 +1,5 @@
 <?php
-  include_once "conf.inc.php";
+include_once "../../conf/conf.inc.php";
 
 class Conexao {  
   

@@ -1,11 +1,11 @@
 html, body{
     position: relative;
     width: 100%;
-    height: 80%;
+    height: 100%;
 
     background: #72ABB8;
 
-    /* overflow-x: hidden; */
+    overflow-x: hidden;     
 }
 
 .col-form-label{
@@ -86,17 +86,17 @@ html, body{
 
 .col-sm-10{
     text-align: center;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .form-check-input-submit{
     box-sizing: border-box;
 
     position: absolute;
-    width: 493px;
-    height: 84px;
-    left: 474px;
-    top: 782px;
+    width: 60%;
+    height: 70px;
+    left: 28%;
+    top: 700px;
 
     background: #E3E3E3;
     border: 1px solid #FFFFFF;
@@ -107,9 +107,7 @@ html, body{
 }
 .form-check-input-submit:active {
         transform: scale(0.98);
-        /* Scaling button to 0.98 to its original size */
         box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-        /* Lowering the shadow */
 }
 
 .footer{

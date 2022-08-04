@@ -3,7 +3,7 @@
         try {
             include $class . '.class.php';
         } catch (Exception $e) {
-            print "Erro ao carregar classes: ". $e->getMessage();
+            throw new Exception("Erro ao carregar classes: ".$e->getMessage());
         }
     })
 ?>

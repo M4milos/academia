@@ -13,7 +13,7 @@ function ValidarEmail () {
 
 function ValidarSenha(){
     let senha = document.getElementById('senha').value;
-    if (senha.length > 6) {
+    if (senha.length >= 3) {
         let alerta = alert('Senha aprovada');
         return alerta;
     }else{
@@ -21,3 +21,4 @@ function ValidarSenha(){
         return alerta;
     }
 }
+
