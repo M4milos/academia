@@ -24,7 +24,7 @@
 </head>
 <body>
     <header>
-        <h1>Logado como: <?php if(!empty($_SESSION['usuario'])){echo $_SESSION['usuario'];} else{echo "Visitante";}?></h1>
+        <?php include_once("../menu/menu.php");?>
     </header>
     <form method="post" action="../processa/processa.php">
         <legend class="col-form-label">

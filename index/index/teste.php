@@ -8,20 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testa</title>
-    <script>const input = document.querySelector("input")
-const form = document.querySelector("form")
-
-form.onsubmit = (e) => {
-  e.preventDefault()
-  input.required = false
-}</script>
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
-<form>
-  <input required>
-  <button type='submit'>
-    Submit
-  </button>
-</form>
-</body>
+    <form action="processa.php" method="POST" enctype="multipart/form-data">
+        <label for="">Imagem de fundo: </label>
+        <input type="file" name="arquivo" id="arquivo">
+        <input type="submit" value="Salvar" name="acao">
+    </form>
+</body> 
 </html>

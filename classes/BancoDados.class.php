@@ -1,9 +1,11 @@
 <?php
+    require_once('../../conf/conf.inc.php');
+
 class BancoDados{
     /* 
-        * Classe baseada
-        * @acess public
-        * @return boolean
+        ** Classe baseada
+        ** @acess public
+        ** @return boolean
     */
 
     public static function Instancia(){ // Cria conexão com o banco de dados e instancia.
@@ -63,5 +65,84 @@ class BancoDados{
                 $dado = $stmt->fetch();
             return $dado;
     }
+
+    // public static function Listagem(){
+
+    //     $sql = "SELECT * FROM usuario";
+
+    //     $param = array();
+
+    //     $consulta = self::Listar($sql,$param);  
+
+    //    foreach($consulta as $key){
+    //         while (current($key)){
+    //             $valor = key($key).'<br/>';
+    //             next($key);
+    //         }
+    //     }
+
+       
+
+        
+
+        // while ($fruit_name = current($array)) {
+        //         echo key($array).'<br />';
+        //     next($array);
+        // }
+        
+
+        // foreach ($consulta as $key => $value) {
+        //    echo $key;
+        // }
+
+
+        // var_dump($consulta);
+
+        // $array = array();
+
+        // foreach($fieldinfo as $valor){
+        //     $valor = $valor->name;
+            
+        //     array_push($array,$valor);
+        // }
+        // for ($i=0; $i < count($array); $i++) { 
+        //     echo "
+        //     <td>".$array[$i]."\n</td>
+        //     <td>".$consulta['nome']."\n</td>
+        // ";
+        // }
+        
+
+
+    // }
+        
+    // public static function teste(){
+    // $con = mysqli_connect("localhost","root","","tcc");
+
+    // if (mysqli_connect_errno()) {
+    //   echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    //   exit();
+    // }
+    
+    // $sql = "SELECT * FROM usuario";
+    
+    // if ($result = mysqli_query($con , $sql)) {
+    
+    //   // Get field information for all fields
+    //   $fieldinfo = mysqli_fetch_fields($result);
+    
+    //   foreach ($fieldinfo as $val) {
+
+    //     printf("Nome: %s\n", $val->name);
+    //     printf("Tabela: %s\n", $val->table);
+    //     printf("Tamanho máximo: %d\n", $val->max_length);
+    //     printf("\n");
+    //   }
+    //   mysqli_free_result($result);
+    // }
+    
+    // mysqli_close($con);
+
+    // }
 }
 ?>
