@@ -40,7 +40,7 @@
                                 ":cpf" => $this->getCpf());
                 return parent::Execute($sql,$param);
             }catch(Exception $e){
-                throw new Exception("Erro ao salvar: ".$e->getMessage());
+                echo "Erro ao salvar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
 
@@ -49,23 +49,22 @@
                 $sql = "SELECT * FROM usuario";
                 if($tipo > 0)
                     switch ($tipo) {
-                        case '1': $sql .= " WHERE id = :info"; break;
+                        case '1': $sql .= " WHERE id_usuario = :info"; break;
                         case '2': $sql .= " WHERE nome LIKE :info"; $info .= "%"; break;
                         case '3': $sql .= " WHERE email LIKE :info"; $info .= "%"; break;
-                        
                     }
                     $param = array();
                         if($tipo > 0)
                             $param = array(":info" => $info);   
                 return parent::Listar($sql,$param);
             }catch(Exception $e){
-                throw new Exception("Erro ao listar: ".$e->getMessage());
+                echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
 
         public function Editar(){
             try{
-                $sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha, cpf = :cpf WHERE id = :id";
+                $sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha, cpf = :cpf WHERE id_usuario = :id";
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
@@ -73,17 +72,17 @@
                                 ":id" => $this->getId());
                 return parent::Execute($sql,$param);
             }catch(Exception $e){
-                throw new Exception("Erro ao editar: ".$e->getMessage());
+                echo "Erro ao editar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
 
         public function Excluir(){
             try{
-                $sql = "DELETE FROM usuario WHERE id = :id";
+                $sql = "DELETE FROM usuario WHERE id_usuario = :id";
                 $param = array(":id" => $this->getId());
                 return parent::Execute($sql,$param);
             }catch(Exception $e){
-                throw new Exception("Erro ao excluir: ".$e->getMessage());
+                echo "Erro ao excluir: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
 
@@ -104,36 +103,40 @@
                         return false; 
                     }
                 }catch(Exception $e){
-                    throw new Exception("Erro ao logar: ".$e->getMessage());
+                    echo "Erro ao logar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
 
-        public static function VerificaLogin($email, $senha){
-            try{
-                if(strlen($email) > 0 && strlen($senha) > 0){
-                    $sql = "SELECT * FROM usuario WHERE email = :email";
-                    $param = array(":email" => $email);
-                    $verificado = parent::EfetuaLogin($sql,$param);
+        // public static function VerificaLogin($email, $senha){
+        //     try{
+        //         if(strlen($email) > 0 && strlen($senha) > 0){
+        //             $sql = "SELECT * FROM usuario WHERE email = :email";
+        //             $param = array(":email" => $email);
+        //             $verificado = parent::EfetuaLogin($sql,$param);
 
-                    $sql2 = "SELECT * FROM usuario WHERE senha = :senha";
-                    $param2 = array(":senha" => $senha);
-                    $verificado2 = parent::EfetuaLogin($sql2,$param2);
-                    if($verificado && $verificado2){
-                        if($verificado['email'] == $verificado2['email']){
-                            return true;
-                        }
-                    }else{
-                        return false;
-                    }
-                }
-            }catch(Exception $e){
-                    throw new Exception("Erro ao verificar: ".$e->getMessage());
-            }
-        }
+        //             $sql2 = "SELECT * FROM usuario WHERE senha = :senha";
+        //             $param2 = array(":senha" => $senha);
+        //             $verificado2 = parent::EfetuaLogin($sql2,$param2);
+        //             if($verificado && $verificado2){
+        //                 if($verificado['email'] == $verificado2['email']){
+        //                     return true;
+        //                 }
+        //             }else{
+        //                 return false;
+        //             }
+        //         }
+        //     }catch(Exception $e){
+        //             throw new Exception("Erro ao verificar: ".$e->getMessage());
+        //     }
+        // }
 
         public static function Deslogar(){
-            session_destroy();
-            return true;
+            try{
+                session_destroy();
+                return true;
+            }   catch(Exception $e){
+                    echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
+            }
         }
     }
 ?>

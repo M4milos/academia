@@ -1,13 +1,18 @@
 html, body{
     position: relative;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
 
     background: #72ABB8;
-
-    overflow-x: hidden;     
+/* 
+    overflow-x: hidden;      */
 }
 
+.cor{
+  background-color: #72ABB8;
+  
+}
+/*
 .col-form-label{
     position: absolute;
     width: 300px;
@@ -109,7 +114,7 @@ html, body{
         transform: scale(0.98);
         box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
-
+/* 
 .footer{
     position: absolute;
     width: 100%;
@@ -143,4 +148,4 @@ html, body{
   .topnav a.active {
     background-color: #04AA6D;
     color: white;
-  }
+  } */ 
