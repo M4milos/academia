@@ -30,25 +30,34 @@
     </header>
 
     <form method="post" action="../processa/processa.php" class="cor">
-            <legend class="">
-                Entrar no sistema
-            </legend>
 
-            <div class="input-group mb-3 ">
-                <span class="input-group-text " id="inputGroup-sizing-sm">
-                    E-mail: 
+    <div class="centro">
+                <span class="">
+                    <legend>Entrar no sistema</legend>
                 </span>
-                <input class="form-control" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
-            </div><br>
 
-            <div class="input-group mb-3 ">
-                <span class="input-group-text " id="inputGroup-sizing-sm">
-                    Senha: 
-                </span>
-                <input class="form-control" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
-            </div><br>
-            <input class="btn btn-primary" type="submit" name="acao" id="Entrar" value="Entrar" onclick="">
-            <input class="btn btn-primary" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">
+            <div class="row justify-content-md-center">
+                <div class="input-group mb-3 col col-lg-3">
+                    <span class="input-group-text " id="inputGroup-sizing-sm">
+                        E-mail: 
+                    </span>
+                    <input class="form-control" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
+                </div><br>
+            </div>
+            
+            <div class="row justify-content-md-center">
+                <div class="input-group mb-3 col col-lg-3">
+                    <span class="input-group-text " id="inputGroup-sizing-sm">
+                        Senha: 
+                    </span>
+                    <input class="form-control" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
+                </div><br>
+            </div>
+            <center>
+                <input class="acao" type="submit" name="acao" id="Entrar" value="Entrar" onclick="">
+                <input class="acao" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">
+            </center>
+        </div>
 
     </form>
     <script src="../js/index.js"></script>

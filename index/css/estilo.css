@@ -1,17 +1,68 @@
 html, body{
-    position: relative;
     /* width: 100%;
     height: 100%; */
 
     background: #72ABB8;
-/* 
-    overflow-x: hidden;      */
+
+    overflow-x: hidden;      
 }
 
 .cor{
   background-color: #72ABB8;
-  
 }
+
+legend {
+  text-align: center;
+}
+
+.acao {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: 100;
+  padding: 10px;
+  background-color: #3D94F6;
+  border: solid #337FED 1px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.acao:hover {
+  border: solid #337FED 1px;
+  background: #1E62D0;
+  background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+  text-decoration: none;
+}
+
+/* .centro{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} */
+
+/* background: rgba( 255, 255, 255, 0.3 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 10px );
+-webkit-backdrop-filter: blur( 10px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+
+/* .row{
+  flex: content;
+  column-gap: 50em;
+  row-gap: 50em;
+} */
 /*
 .col-form-label{
     position: absolute;
@@ -27,6 +78,8 @@ html, body{
     line-height: 56px;
 
     color: #000000;
+
+
 
 }
 .form-check-label-email{

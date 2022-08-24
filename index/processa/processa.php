@@ -14,23 +14,21 @@ require_once('../utils/utilidades.php');
 
         if ($acao == 'Entrar') {
             $logar = Login::Logar($email, $senha);
+           if ($logar == true) {
+               echo $_SESSION['usuario'];
+            }
         }
         if($acao == 'Sair'){
             $logar = Login::Deslogar();
-            $logar2 = false;
         }
 
-        if ($logar == true && $logar2 == true) {
-            Index();
-        }else{
-            index();
-        }
+        
 
-        if(!empty($_SESSION['nao_autenticado'])){
-            if ($_SESSION['nao_autenticado'] == true) {
-                Index();
-            }
-        }
+        // if(!empty($_SESSION['nao_autenticado'])){
+        //     if ($_SESSION['nao_autenticado'] == true) {
+        //         Index();
+        //     }
+        // }
     } catch (Exception $e) {
         echo $e->getMessage();
     }
