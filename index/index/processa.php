@@ -6,5 +6,6 @@
     $destino = "imagens/".$arquivo['name'];
 
     move_uploaded_file($arquivo['tmp_name'], $destino );
+    
 
 ?>
