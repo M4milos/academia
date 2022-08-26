@@ -33,7 +33,7 @@
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO usuario (nome,email,senha,cpf) VALUES (:nome,:email,:senha,:cpf)";
+                $sql = "INSERT INTO TCC.usuario (nome,email,senha,cpf) VALUES (:nome,:email,:senha,:cpf)";
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
@@ -46,7 +46,7 @@
 
         public static function Listar($tipo = 0, $info = ""){
             try{
-                $sql = "SELECT * FROM usuario";
+                $sql = "SELECT * FROM TCC.usuario";
                 if($tipo > 0)
                     switch ($tipo) {
                         case '1': $sql .= " WHERE id_usuario = :info"; break;
@@ -64,7 +64,7 @@
 
         public function Editar(){
             try{
-                $sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha, cpf = :cpf WHERE id_usuario = :id";
+                $sql = "UPDATE TCC.usuario SET nome = :nome, email = :email, senha = :senha, cpf = :cpf WHERE id_usuario = :id";
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
@@ -78,7 +78,7 @@
 
         public function Excluir(){
             try{
-                $sql = "DELETE FROM usuario WHERE id_usuario = :id";
+                $sql = "DELETE FROM TCC.usuario WHERE id_usuario = :id";
                 $param = array(":id" => $this->getId());
                 return parent::Execute($sql,$param);
             }catch(Exception $e){
@@ -89,7 +89,7 @@
         public static function Logar($email, $senha){
             try{
                 if(strlen($email) > 0 && strlen($senha) > 0){
-                    $sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
+                    $sql = "SELECT * FROM TCC.usuario WHERE email = :email AND senha = :senha";
                     $param = array(":email" => $email, ":senha" => $senha);
                     $result = parent::EfetuaLogin($sql,$param);
                     if($result){

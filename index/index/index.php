@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet">
     <?php
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
@@ -21,48 +21,158 @@
         //echo $_SESSION['usuario'];
         
     ?>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    html, body{
+            /* width: 100%;
+        height: 100%; */
+        background: #72ABB8;
+        margin: 0px;
+        overflow-x: hidden;      
+    }
+
+    .cor{
+        padding: 40px;
+        border-radius: 12px;
+        width: 480px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+    }
+
+    legend {
+        text-align: center;
+    }
+
+        .acao {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 30px;
+        color: black; 
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: 100;
+        padding: 2%;
+        background-color: #D9D9D9;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        width: 35%;
+    }
+
+    header{
+        background-color: black;
+        padding: 20px;
+        margin: 0px;
+
+    }
+
+    .input{
+        border-radius: 2vh;
+        width:80%;
+        height: 6vh;
+        border: none;
+        background-color: #D9D9D9;
+    }
+
+        .center{
+        margin: 5% 30%;
+    }
+
+
+    .btn:link,
+    .btn:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: relative;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-white {
+    background-color: #E3E3E3;
+    color: black;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #D9D9D9;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+    </style>
 </head>
 <body>
 
     <header>
         <?php include_once("../menu/menu.php");?>
     </header>
+    
+    <div class="center"> 
+        <center> 
+            <form method="post" action="../processa/processa.php">
+                <b><p>Entrar no Sistema:</p></b>
+                <br>
+                <b>Email:</b>&ensp;
+                <input class="input" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
+                    <br><br><br>
+                <b>Senha:</b>&ensp;
+                    <input class="input" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
+                    <br><br><br>
+                    <div class="text-box">
+                        <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Entrar</a>
+                    </div> 
+                    <!--<input class="acao" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">-->
+            </form>
+        </center> 
+    </div>
 
-    <form method="post" action="../processa/processa.php" class="cor">
-
-    <div class="centro">
-                <span class="">
-                    <legend>Entrar no sistema</legend>
-                </span>
-
-            <div class="row justify-content-md-center">
-                <div class="input-group mb-3 col col-lg-3">
-                    <span class="input-group-text " id="inputGroup-sizing-sm">
-                        E-mail: 
-                    </span>
-                    <input class="form-control" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
-                </div><br>
-            </div>
-            
-            <div class="row justify-content-md-center">
-                <div class="input-group mb-3 col col-lg-3">
-                    <span class="input-group-text " id="inputGroup-sizing-sm">
-                        Senha: 
-                    </span>
-                    <input class="form-control" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
-                </div><br>
-            </div>
-            <center>
-                <input class="acao" type="submit" name="acao" id="Entrar" value="Entrar" onclick="">
-                <input class="acao" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">
-            </center>
-        </div>
-
-    </form>
+ 
     <script src="../js/index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

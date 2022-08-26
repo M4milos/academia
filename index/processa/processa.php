@@ -15,7 +15,7 @@ require_once('../utils/utilidades.php');
         if ($acao == 'Entrar') {
             $logar = Login::Logar($email, $senha);
            if ($logar == true) {
-               echo $_SESSION['usuario'];
+                header('../index/inicial.phtml');
             }
         }
         if($acao == 'Sair'){
