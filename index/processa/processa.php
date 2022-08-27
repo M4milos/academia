@@ -6,6 +6,11 @@ require_once('../utils/utilidades.php');
     try {
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
+        $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
+        
+        $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
+        $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
+
         $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
 
         if(empty($acao)){
@@ -15,11 +20,30 @@ require_once('../utils/utilidades.php');
         if ($acao == 'Entrar') {
             $logar = Login::Logar($email, $senha);
            if ($logar == true) {
-                header('../index/inicial.phtml');
+                header("Location: ../index/inicial.phtml");
             }
         }
         if($acao == 'Sair'){
+
+            echo "Saindo...";
+
             $logar = Login::Deslogar();
+            header("Location: ../index/index.php");
+        }
+        if($acao == 'Cadastrar'){
+
+            // echo    "Nome: ".$nome."<br>
+            //         Email: ".$email."<br>
+            //         Cpf: ".$cpf."<br>
+            //         Senha: ".$senha."<br>
+            //         Tipo: ".$tipo;
+
+            $cadastrar = new Login("",$nome, $email, $senha, $cpf, $tipo);
+
+            $cadastrar->Salvar();
+            if($cadastrar == true){
+                header("Location: ../index/inicial.phtml");
+            }
         }
 
         

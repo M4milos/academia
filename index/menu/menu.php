@@ -1,13 +1,12 @@
 <style>
-  a{
-    text-decoration:none;
-    color: white;
+  input{
+    text-decoration: none;
+    color: black;
     padding: 5px 20px 5px 20px;
   }
 </style>
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <form method="POST" action="../processa/processa.php"> 
+    <input type="submit" id="Sair" name="acao" value="Sair">
+  </form>
 </div>
