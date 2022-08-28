@@ -38,7 +38,7 @@
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `tcc`.`personal` (`nome`, `email`, `senha`,  `cpf`, `id_funcao` ) VALUES (:nome,:email,:senha,:cpf,:id_funcao)";
+                $sql = "INSERT INTO `tcc`.`usuario` (`nome`, `email`, `senha`,  `cpf`, `id_funcao` ) VALUES (:nome,:email,:senha,:cpf,:id_funcao)";
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),

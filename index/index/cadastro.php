@@ -44,7 +44,7 @@
     <div class="center"> 
         <center> 
             <form method="post" action="../processa/processa.php">
-                <b><p>Cadastro do Sistema:</p></b>
+                <b><p>Cadastro do Sistema: <p id="Selecionar"></p></p></b>
                 <br>
                 <b>Nome:</b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
@@ -59,7 +59,7 @@
                     <input class="input" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Tipo:</b>&ensp;
-                <select class="input" id="tipo" name="tipo">
+                <select onchange="atualizou()" class="input" id="tipo" name="tipo">
                     <?php
                         echo ListarUsuario(0);
                     ?>

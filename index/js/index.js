@@ -22,3 +22,27 @@ function ValidarSenha(){
     }
 }
 
+function atualizou() {
+    
+    var selecionar = document.getElementById("Selecionar");
+    if (selecionar != "Selecione") {
+        let select = document.querySelector('#tipo');
+        let optionvalue = select.options[select.selectedIndex];
+
+        let value = optionvalue.value;
+        let text = optionvalue.text;
+
+        selecionar.innerHTML = (text);
+
+        switch (selecionar) {
+            case selecionar.value = "Selecione":
+                selecionar.innerHTML = "";
+                break;
+        }
+            
+        console.log(value, text);
+    }
+
+    
+}
+

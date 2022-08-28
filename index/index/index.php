@@ -43,7 +43,8 @@
                     <input class="input" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
                     <div class="text-box">
-                        <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Entrar</a>
+                        <input class="acao" type="submit" name="acao" id="Entrar" value="Entrar">    
+                    <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Entrar</a> -->
                     </div> 
                     <!--<input class="acao" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">-->
             </form>

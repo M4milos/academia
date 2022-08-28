@@ -20,9 +20,12 @@ require_once('../utils/utilidades.php');
         if ($acao == 'Entrar') {
             $logar = Login::Logar($email, $senha);
            if ($logar == true) {
-                header("Location: ../index/inicial.phtml");
+                header("Location: ../index/inicial.php");
+            }else{
+                header("Location: ../index/index.php");
             }
         }
+
         if($acao == 'Sair'){
 
             echo "Saindo...";
@@ -42,7 +45,7 @@ require_once('../utils/utilidades.php');
 
             $cadastrar->Salvar();
             if($cadastrar == true){
-                header("Location: ../index/inicial.phtml");
+                header("Location: ../index/inicial.php");
             }
         }
 
