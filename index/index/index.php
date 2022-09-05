@@ -31,7 +31,7 @@
         <?php include_once("../menu/menu.php");?>
     </header>
     
-    <div class="center"> 
+    <div class="center">  
         <center> 
             <form method="post" action="../processa/processa.php">
                 <b><p>Entrar no Sistema:</p></b>
