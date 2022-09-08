@@ -47,16 +47,16 @@
                 <b><p>Cadastro do Sistema: <p id="Selecionar"></p></p></b>
                 <br>
                 <b>Nome:</b>&ensp;
-                <input class="input" id="nome" name="nome" type="text" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
+                <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Email:</b>&ensp;
-                <input class="input" id="email" name="email" type="text" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
+                <input class="input" id="email" name="email" type="text" style="padding-left: 10px;" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
                     <br><br><br>
-                <b>Cpf:</b>&ensp;
-                <input class="input" id="cpf" name="cpf" type="text" value="<?php if(isset($cpf)){ echo $cpf;} else{ echo "";}?>">
+                <b>Cpf:</b>&ensp;&ensp;
+                <input class="input" id="cpf" name="cpf" type="text" style="padding-left: 10px;" value="<?php if(isset($cpf)){ echo $cpf;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Senha:</b>&ensp;
-                    <input class="input" id="senha" name="senha" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
+                    <input class="input" id="senha" name="senha" style="padding-left: 10px;" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Tipo:</b>&ensp;
                 <select onchange="atualizou()" class="input" id="tipo" name="tipo">
@@ -66,7 +66,7 @@
                 </select>
                 <br><br><br>
                     <div class="text-box">
-                        <input class="btn btn-white btn-animate" type="submit" name="acao" value="Cadastrar" id="Cadastrar" class="btn">
+                        <input class="acao btn btn-white btn-animate" type="submit" name="acao" value="Cadastrar" id="Cadastrar" class="btn">
                         <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Cadastrar</a> -->
                     </div>
                     <br><br><br>

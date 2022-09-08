@@ -8,15 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página inicial</title>
-    <?php
-        if(!empty($_SESSION['usuario'])){
-            echo "Logado com sucesso";
-        }else{
-            echo "Cadastrado com sucesso";
-        }
-    ?>
+    <link rel="stylesheet" href="../css/estilo2.css">
 </head>
 <body>
-    
+    <?php
+        require_once('../menu/menu.php');
+    ?>
+        <div class="fundo">
+            <img src="../img/peso.png" alt="" style="margin-left: 25%; display: inline-block;">
+            <img src="../img/circuito.png" alt="" style="margin-right: 25%; float: right;">
+        </div>
+        <footer></footer>
 </body>
 </html>
