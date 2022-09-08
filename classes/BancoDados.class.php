@@ -9,7 +9,7 @@ class BancoDados{
     */
 
     public static function Instancia(){ // Cria conexão com o banco de dados e instancia.
-            require_once "conexao.class.php"; // Requerimento da conexão PDO.
+            require_once "Conexao.class.php"; // Requerimento da conexão PDO.
         return Conexao::getInstance(); // Retornando uma instancia / conexão.
     }
 

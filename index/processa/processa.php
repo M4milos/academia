@@ -35,11 +35,11 @@ require_once('../utils/utilidades.php');
         }
         if($acao == 'Cadastrar'){
 
-            // echo    "Nome: ".$nome."<br>
-            //         Email: ".$email."<br>
-            //         Cpf: ".$cpf."<br>
-            //         Senha: ".$senha."<br>
-            //         Tipo: ".$tipo;
+             //echo    "Nome: ".$nome."<br>
+             //        Email: ".$email."<br>
+              //       Cpf: ".$cpf."<br>
+              //       Senha: ".$senha."<br>
+              //       Tipo: ".$tipo;
 
             $cadastrar = new Login("",$nome, $email, $senha, $cpf, $tipo);
 
