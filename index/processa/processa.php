@@ -27,10 +27,10 @@ require_once('../utils/utilidades.php');
         }
 
         if($acao == 'Sair'){
-
-            echo "Saindo...";
-
-            $logar = Login::Deslogar();
+            if (!empty($_SESSION['usuario'])) {    
+                echo "Saindo...";
+                $logar = Login::Deslogar();
+            }
             header("Location: ../index/index.php");
         }
         if($acao == 'Cadastrar'){
@@ -57,7 +57,7 @@ require_once('../utils/utilidades.php');
         //     }
         // }
     } catch (Exception $e) {
-        echo $e->getMessage();
+        echo "Erro ao executar os comandos: ('{$e->getMessage()}')\n{$e}\n";
     }
     
   //8F*12Gsfu1xhvdJmxbXZ  

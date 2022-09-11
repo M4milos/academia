@@ -3,9 +3,9 @@
     require_once('../utils/utilidades.php');
     session_start();
 
-    if (!empty($_SESSION['usuario'])) {
-        header("Location: index.php");
-    }
+    // if (!empty($_SESSION['usuario'])) {
+    //     header("Location: index.php");
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -23,6 +23,10 @@
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
         
         $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
+
+        if (empty($acao)) {
+            $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
+        }
 
         //echo "Email: ".$email." Senha: ".$senha;
 
@@ -53,13 +57,13 @@
                 <input class="input" id="email" name="email" type="text" style="padding-left: 10px;" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Cpf:</b>&ensp;&ensp;
-                <input class="input" id="cpf" name="cpf" type="text" style="padding-left: 10px;" value="<?php if(isset($cpf)){ echo $cpf;} else{ echo "";}?>">
+                <input class="input" maxlength="14" id="cpf" name="cpf" type="text" style="padding-left: 10px;" value="<?php if(isset($cpf)){ echo $cpf;} else{ echo "";}?>" onkeyup="Mascara()">
                     <br><br><br>
                 <b>Senha:</b>&ensp;
                     <input class="input" id="senha" name="senha" style="padding-left: 10px;" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
                 <b>Tipo:</b>&ensp;
-                <select onchange="atualizou()" class="input" id="tipo" name="tipo">
+                <select class="input" id="tipo" name="tipo">
                     <?php
                         echo ListarUsuario(0);
                     ?>

@@ -15,8 +15,10 @@
         require_once('../menu/menu.php');
     ?>
         <div class="fundo">
-            <img src="../img/peso.png" alt="" style="margin-left: 25%; display: inline-block;">
-            <img src="../img/circuito.png" alt="" style="margin-right: 25%; float: right;">
+            <img src="../img/peso.png" style="margin-left: 25%; display: inline-block;">
+                <!-- <p>Cadastrar treino</p> -->
+            <img src="../img/circuito.png" style="margin-right: 25%; float: right;" >
+                <!-- <p>Visualizar treino</p> -->
         </div>
         <footer></footer>
 </body>

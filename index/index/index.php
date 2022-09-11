@@ -1,6 +1,8 @@
 <?php
     require_once('../../classes/autoload.class.php');
     session_start();
+        
+
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -13,8 +15,12 @@
     <?php
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
-        
+
         $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
+
+        if (empty($acao)) {
+            $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
+        }
 
         //echo "Email: ".$email." Senha: ".$senha;
 
@@ -40,11 +46,15 @@
                 <b>Senha:</b>&ensp;
                     <input class="input" id="senha" name="senha" type="password"  style="padding-left: 10px;" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
+                <!-- <b>Senha:</b>&ensp;
+                    <input class="input" id="senha" name="senha" type="password"  style="padding-left: 10px;" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
+                    <br><br><br> -->
                     <div class="text-box">
                         <input class="acao btn btn-white btn-animate" type="submit" name="acao" id="Entrar" value="Entrar">    
                     <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Entrar</a> -->
                     </div> 
                     <!--<input class="acao" type="submit" name="acao" id="Sair" value="Sair" onclick="remover()">-->
+                <!-- <a class="#" href="index.php?acao=esqueci">Esqueci a senha</a> -->
             </form>
         </center> 
     </div>

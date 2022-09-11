@@ -22,27 +22,34 @@ function ValidarSenha(){
     }
 }
 
-function atualizou() {
+// function atualizou() {
     
-    var selecionar = document.getElementById("Selecionar");
-    if (selecionar != "Selecione") {
-        let select = document.querySelector('#tipo');
-        let optionvalue = select.options[select.selectedIndex];
+//     var selecionar = document.getElementById("Selecionar");
+//     if (selecionar != "Selecione") {
+//         let select = document.querySelector('#tipo');
+//         let optionvalue = select.options[select.selectedIndex];
 
-        let value = optionvalue.value;
-        let text = optionvalue.text;
+//         let value = optionvalue.value;
+//         let text = optionvalue.text;
 
-        selecionar.innerHTML = (text);
+//         selecionar.innerHTML = (text);
 
-        switch (selecionar) {
-            case selecionar.value = "Selecione":
-                selecionar.innerHTML = "";
-                break;
-        }
+//         switch (selecionar) {
+//             case selecionar.value = "Selecione":
+//                 selecionar.innerHTML = "";
+//                 break;
+//         }
             
-        console.log(value, text);
+//         console.log(value, text);
+//     }    
+// }
+
+function Mascara(){
+    var elemento = document.getElementById('cpf');
+    var cpf = elemento.value;
+    if (cpf.length == 3 || cpf.length == 7) {
+        elemento.value += ".";
+    }else if (cpf.length == 11) {
+        elemento.value += "-";
     }
-
-    
 }
-
