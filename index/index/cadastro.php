@@ -2,10 +2,6 @@
     require_once('../../classes/autoload.class.php');
     require_once('../utils/utilidades.php');
     session_start();
-
-    // if (!empty($_SESSION['usuario'])) {
-    //     header("Location: index.php");
-    // }
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -35,12 +31,8 @@
         // echo    "Tipo: ".$tipo."<br>".
         //         "Ação: ".$acao;
     ?>
-    <style>
-    
-    </style>
 </head>
 <body>
-
     <header>
         <?php include_once("../menu/menu.php");?>
     </header>
@@ -78,9 +70,6 @@
             </form>
         </center> 
     </div>
-
- 
     <script src="../js/index.js"></script>
-
 </body>
 </html>

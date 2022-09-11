@@ -3,7 +3,7 @@
 
 class BancoDados{
     /* 
-        ** Classe baseada
+        ** Classe Banco de dados
         ** @acess public
         ** @return boolean
     */

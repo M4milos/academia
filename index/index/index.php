@@ -1,8 +1,6 @@
 <?php
     require_once('../../classes/autoload.class.php');
     session_start();
-        
-
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -32,9 +30,7 @@
     </style>
 </head>
 <body>
-
         <?php include_once("../menu/menu.php");?>
-    
     <div class="center">  
         <center> 
             <form method="post" action="../processa/processa.php">
@@ -58,8 +54,6 @@
             </form>
         </center> 
     </div>
-
- 
     <script src="../js/index.js"></script>
 </body>
 </html>
