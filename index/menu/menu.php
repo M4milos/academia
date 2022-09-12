@@ -129,7 +129,7 @@ nav{
             <ul>
                 <li><a href="inicial.php">Início</a></li>
                 <li><a href="index.php">Login</a></li>
-                <li><a href="cadastro.php">Cadastro</a></li>
+                <li><a href="cadastro.php">Cadastre-se</a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
             </ul>
             </center>
