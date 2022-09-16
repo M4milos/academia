@@ -131,6 +131,7 @@ nav{
                 <li><a href="index.php">Login</a></li>
                 <li><a href="cadastro.php">Cadastre-se</a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
+                <li><a href="../processa/processa.php?acao=Excluir&arquivo=">Excluir</a></li>
             </ul>
             </center>
         </nav>
