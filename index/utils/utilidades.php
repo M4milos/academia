@@ -34,7 +34,8 @@
 
     $file = fopen($filename, "w");
      
-    if ($tipo == "Cadastro") {
+    switch ($tipo) {
+        case 'Cadastro':
             $string = 
 '<?php
     require_once("../../classes/autoload.class.php");
@@ -110,8 +111,10 @@
     </div>
     <script src="../js/index.js"></script>
 </body>
-</html>';}
-        elseif ($tipo == "Login") {
+</html>';
+            break;
+        
+        case 'Login':
             $string = 
 '<?php
 require_once("../../classes/autoload.class.php");
@@ -172,10 +175,8 @@ session_start();
 <script src="../js/index.js"></script>
 </body>
 </html>';
-        }
-else{
-            return false;
-        }
+            break;
+    }
         $file = fwrite($file, $string);
     }
 }
