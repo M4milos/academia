@@ -128,8 +128,8 @@ nav{
         <nav>
             <center>
             <ul>
-                <li><a href="inicial.php">Início</a></li>
-                <li><a href="index.php">Login</a></li>
+                <li><a href="index.php">Início</a></li>
+                <li><a href="login.php">Login</a></li>
                 <li><a href="cadastro.php">Cadastre-se</a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
                 <li><a href="../processa/processa.php?acao=Excluir&arquivo=">Excluir</a></li>
