@@ -7,9 +7,21 @@
     <title>Teste</title>
 </head>
 <body>
-    <form action="#" method="post">
-        <label for="name">Name: </label><input type="text"> <input type="checkbox" name="treino" id="treino"><br>
-        <input type="text" name="" id="">
-    </form>
+ 
+    <script>
+        document.getElementById("treino").onclick = function () {
+            const input = document.querySelector('#nome');
+            const select = document.querySelector('#select');
+            const check = document.querySelector('#treino');
+            if (check.checked) {
+                input.disabled = true;
+                input.value = "";
+                select.disabled = false;
+            }else{
+                input.disabled = false;
+                select.disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>
