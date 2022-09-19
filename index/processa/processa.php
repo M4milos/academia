@@ -28,7 +28,6 @@ require_once('../utils/utilidades.php');
 
         if($acao == 'Sair'){
             if (!empty($_SESSION['usuario'])) {    
-                echo "Saindo...";
                 $logar = Login::Deslogar();
             }
             header("Location: ../index/index.php");
