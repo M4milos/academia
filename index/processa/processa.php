@@ -49,12 +49,6 @@ require_once('../utils/utilidades.php');
             }
         }
 
-        if ($acao == "Excluir") {
-            $filename = isset($_POST['arquivo']) ? $_POST['arquivo'] : "";
-            unlink($filename);
-        }
-        
-
         // if(!empty($_SESSION['nao_autenticado'])){
         //     if ($_SESSION['nao_autenticado'] == true) {
         //         Index();
