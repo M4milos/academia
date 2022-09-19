@@ -68,9 +68,10 @@ ul{
 }
 
 label{
-    left: 88%;
+    left: <?php if(empty($_SESSION['usuario'])){ echo "88%;";} else {echo "80%;";}?>;
     padding: 18px;
     position: relative;
+    display: inline;
 }
 
 #check{
