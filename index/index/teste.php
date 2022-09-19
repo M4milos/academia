@@ -7,7 +7,17 @@
     <title>Teste</title>
 </head>
 <body>
- 
+    <form action="#" method="post">
+        <label for="name">Name do treino: </label><input type="text" name="nome" id="nome"> <input type="checkbox" name="treino" id="treino"><label for="">Treino já existe</label><br>
+        <label for="qnt">Quantidade: </label><input type="text" name="quantidade" id="quantidade"><br>
+        <select name="select" id="select" disabled>
+            <option value="Braço">Braço</option>
+            <option value="Perna">Perna</option>
+            <option value="XXXXXXX">XXXXXXX</option>
+            <option value="YYYYYYY">YYYYYYY</option>
+        </select>
+    </form>
+
     <script>
         document.getElementById("treino").onclick = function () {
             const input = document.querySelector('#nome');
