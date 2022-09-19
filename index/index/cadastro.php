@@ -2,6 +2,7 @@
     require_once('../../classes/autoload.class.php');
     require_once('../utils/utilidades.php');
     session_start();
+    $acao = isset($_POST['acao']) ? $_POST['acao'] : ""; if (empty($acao)) {$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -9,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar</title>
+    <title><?php if($acao == "Treino"){echo "Cadastrar treino";}else{echo "Cadastrar no sistema";} ?></title>
     <link rel="stylesheet" href="../css/estilo.css">
     <?php
         $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
@@ -18,7 +19,6 @@
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
         
-        $acao = isset($_POST['acao']) ? $_POST['acao'] : ""; if (empty($acao)) {$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
 
         //echo "Email: ".$email." Senha: ".$senha;
 
@@ -36,7 +36,7 @@
     <div class="center"> 
         <center> 
             <form method="post" action="../processa/processa.php">
-                <b><p>Cadastro do Sistema: <p id="Selecionar"></p></p></b>
+                <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";}else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
                 <b>Nome:</b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">

@@ -16,7 +16,7 @@
     ?>
         <div class="fundo">
             <img src="../img/peso.png" style="margin-left: 25%; display: inline-block;">
-            <input type="button" onclick="location.href='cadastro.php';" value="Cadastrar Treino" />
+            <input type="button" onclick="location.href='cadastro.php?acao=Treino';" value="Cadastrar Treino" />
                 <!-- <p>Cadastrar treino</p> -->
             <img src="../img/circuito.png" style="margin-right: 25%; float: right;" >
                 <!-- <p>Visualizar treino</p> -->
