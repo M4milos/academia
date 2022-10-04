@@ -1,4 +1,4 @@
-.fundo{
+.content-site{
     background-color: #54b3d6;
     padding-bottom: 8%;
     padding-top: 2%;
@@ -19,8 +19,8 @@ body{
     background-image: url(../img/imagem.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
-    overflow: hidden;
 }
+
 
 footer{
     background-color: black;
@@ -65,8 +65,8 @@ footer{
     margin-right: 20%;
 }
 
-.btn:link,
-.btn:visited {
+.button:link,
+.button:visited {
 text-transform: uppercase;
 text-decoration: none;
 padding: 15px 40px;
@@ -76,22 +76,22 @@ transition: all .2s;
 position: relative;
 }
 
-.btn:hover {
+.button:hover {
 transform: translateY(-3px);
 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn:active {
+.button:active {
 transform: translateY(-1px);
 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.button-white {
 background-color: #E3E3E3;
 color: black;
 }
 
-.btn::after {
+.button::after {
 content: "";
 display: inline-block;
 height: 100%;
@@ -104,16 +104,16 @@ z-index: -1;
 transition: all .4s;
 }
 
-.btn-white::after {
+.button-white::after {
 background-color: #D9D9D9;
 }
 
-.btn:hover::after {
+.button:hover::after {
 transform: scaleX(1.4) scaleY(1.6);
 opacity: 0;
 }
 
-.btn-animated {
+.button-animated {
 animation: moveInBottom 5s ease-out;
 animation-fill-mode: backwards;
 }
