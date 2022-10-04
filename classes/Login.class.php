@@ -111,7 +111,7 @@
                     $result = parent::EfetuaLogin($sql,$param);
                     if($result){
                         if(count($result) > 0){
-                                $_SESSION['usuario'] = $result['nome'];
+                                $_SESSION['usuario'] = array('Id' => $result['id'], 'Nome' => $result['nome']);
                                 return true;
                             }
                         }

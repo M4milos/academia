@@ -9,7 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página inicial</title>
     <link rel="stylesheet" href="../css/estilo2.css">
-    
+    <script>
+        function Treino(){
+            location.href='cadastro.php?acao=Treino';
+        }
+        function Dados(){
+            location.href='mostrar.php';
+        }
+    </script>    
 </head>
 <body>
     <?php
@@ -17,10 +24,15 @@
     ?>
         <div class="fundo">
             <img src="../img/peso.png" style="margin-left: 25%; display: inline-block;">
-            <input type="button" onclick="location.href='cadastro.php?acao=Treino';" value="Cadastrar Treino" />
-                <!-- <p>Cadastrar treino</p> -->
-            <img src="../img/circuito.png" style="margin-right: 25%; float: right;" >
+            <div class= "text-box">
+                <input class="acao btn btn-white btn-animate" type="submit" name="acao" onclick="Treino()" value="Cadastrar Treino" />
+                <!-- <p>Cadastrar treino</p> --> 
+            </div>
+            <img src="../img/circuito.png" style="margin-left: 100%; display: inline-block;">
+            <div class= "text-box">
+                <input class="right btn btn-white btn-animate" type="submit" name="acao" onclick="Dados()" value="Cadastrar Treino" />
                 <!-- <p>Visualizar treino</p> -->
+            </div> 
         </div>
         <footer></footer>
 </body>
