@@ -1,6 +1,7 @@
 <?php
     session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +18,13 @@
         function Dados(){
             location.href='mostrar.php';
         }
-    </script>    
+    </script>
+
 </head>
 <body>
     <?php
         require_once('../menu/menu.php');
-    ?>
-
+    ?>  
 <section class="content-site">
     <div class="container">
         <div class="row">
@@ -33,10 +34,10 @@
         <div class="row" style="margin-left: 13%;">
             <div class="col-sm-6">
                 <div class="tumbnail">
-                    <img src="../img/peso.png" style="margin-left: 25%; width: 20%;">
+                    <img src="../img/peso.png" style="margin-left: 25%; width: 25%;">
                     <div class="caption text-center">
                         <div class= "text-box">
-                            <input class="acao button button-white button-animate" type="submit" name="acao" onclick="Treino()" value="Cadastrar Treino" style="margin-right: 50%; padding: 7%">
+                            <input class=" button1 button"type="submit" name="acao" onclick="Treino()" value="Cadastrar Treino" style="margin-right: 24%; padding: 1%; margin-top: 5%;">
                             <!--    <p>Cadastrar treino</p> -->
                         </div>
                     </div>
@@ -45,10 +46,10 @@
 
             <div class="col-sm-6">
                     <div class="tumbnail">
-                        <img src="../img/circuito.png" style="margin-left: 25%; width: 20%;">
+                        <img src="../img/circuito.png" style="margin-left: 25%;  width: 20%;"> <br>
                         <div class="caption text-center">
                             <div class="text-box">
-                                <input class="right button button-white button-animate" type="submit" name="acao" onclick="Treino()" value="Cadastrar Treino" style="margin-right: 10%;">
+                                <input class=" button1 button" type="submit" name="acao" onclick="Treino()" value="Visualizar dados" style="margin-right: 30%; margin-top: 10%; padding: 1%;">
                             </div>
                         </div>
                     </div>

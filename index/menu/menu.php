@@ -9,7 +9,6 @@ header{
     padding: 0.5%;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    
 }
 
 h2{
@@ -82,7 +81,7 @@ nav{
     left: 80%;
     background-color: black;
     width: 20%;
-    height: 100%;
+    height: 165%;
     position: absolute;
     display: none;
     animation: fade-in 1s;
@@ -115,7 +114,7 @@ nav{
         <span>
             <?php
                 if (!empty($_SESSION['usuario'])) {
-                    echo $_SESSION['usuario'];
+                    echo $_SESSION['usuario']['Nome'];
                 }else{
                     echo "Visitante";
                 }
@@ -130,7 +129,7 @@ nav{
             <ul>
                 <li><a href="index.php">Início</a></li>
                 <li><a href="login.php">Login</a></li>
-                <li><a href="cadastro.php">Cadastre-se</a></li>
+                <li><a href="cadastro.php<?php if(!empty($_SESSION['usuario'])){ echo "?acao=Editar";}?>  "><?php if(!empty($_SESSION['usuario'])){ echo "Editar usuario";} else{ echo "Cadastre-se";}?></a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
             </ul>
             </center>

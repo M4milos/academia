@@ -10,9 +10,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if($acao == "Treino"){echo "Cadastrar treino";}else{echo "Cadastrar no sistema";} ?></title>
+    <title><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif(!empty($_SESSION['usuario'])) {echo "Editar usuario";} else{echo "Cadastrar no sistema";} ?></title>
     <link rel="stylesheet" href="../css/estilo.css">
     <?php
+
+    $list = Login::ListarUsuario($tipo = 1, $info = $_SESSION['usuario']['id']);
+
+    var_dump($_SESSION);
+
+    die();
+
         $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
@@ -36,7 +43,7 @@
     <div class="center"> 
         <center> 
             <form method="post" action="../processa/processa.php">
-                <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";}else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
+                <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
                 <b>Nome:</b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">

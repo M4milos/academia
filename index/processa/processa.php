@@ -20,7 +20,7 @@ require_once('../utils/utilidades.php');
         if ($acao == 'Entrar') {
             $logar = Login::Logar($email, $senha);
            if ($logar) { 
-                header("Location: ../index/inicial.php");
+                header("Location: ../index/index.php");
             }else{
                 header("Location: ../index/index.php");
             }

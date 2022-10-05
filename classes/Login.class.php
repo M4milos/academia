@@ -111,7 +111,8 @@
                     $result = parent::EfetuaLogin($sql,$param);
                     if($result){
                         if(count($result) > 0){
-                                $_SESSION['usuario'] = array('Id' => $result['id'], 'Nome' => $result['nome']);
+                                $_SESSION['usuario'] = array('id' => $result['id'], 'Nome' => $result['nome']);
+                                setcookie("id",$result['id']);
                                 return true;
                             }
                         }
