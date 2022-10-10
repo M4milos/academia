@@ -114,7 +114,7 @@ nav{
         <span>
             <?php
                 if (!empty($_SESSION['usuario'])) {
-                    echo $_SESSION['usuario']['Nome'];
+                    echo $_SESSION['usuario']['nome'];
                 }else{
                     echo "Visitante";
                 }

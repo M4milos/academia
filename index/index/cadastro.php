@@ -14,19 +14,22 @@
     <link rel="stylesheet" href="../css/estilo.css">
     <?php
 
-    $list = Login::ListarUsuario($tipo = 1, $info = $_SESSION['usuario']['id']);
-
-    var_dump($_SESSION);
-
-    die();
-
+    if (!empty($_SESSION['usuario']) && $acao == "Editar") {
+        $list = Login::ListarUsuario($tipo = 1, $info = $_SESSION['usuario']['id']);
+        $id = $list[0]['id_usuario'];
+        $nome = $list[0]['nome'];
+        $email = $list[0]['email'];
+        $cpf = $list[0]['cpf'];
+        $senha = $list[0]['senha'];
+        $tipo = $list[0]['id_funcao'];
+    }else{
+        $id = isset($_POST['id']) ? $_POST['id'] : 0;
         $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
-        $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
-        
-
+        $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 0;
+    }
         //echo "Email: ".$email." Senha: ".$senha;
 
         //echo $_SESSION['usuario'];
@@ -45,6 +48,7 @@
             <form method="post" action="../processa/processa.php">
                 <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
+                <input type="hidden" name="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
                 <b>Nome:</b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
                     <br><br><br>
@@ -60,12 +64,12 @@
                 <b>Tipo:</b>&ensp;
                 <select class="input" id="tipo" name="tipo">
                     <?php
-                        echo ListarUsuario(0);
+                        echo ListarUsuario($tipo);
                     ?>
                 </select>
                 <br><br><br>
                     <div class="text-box">
-                        <input class="acao btn btn-white btn-animate" type="submit" name="acao" value="Cadastrar" id="Cadastrar" class="btn">
+                        <input class="acao btn btn-white btn-animate" type="submit" name="acao" value="<?php if($acao){ echo $acao; } else{ echo "Cadastrar";}?>" class="btn">
                         <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Cadastrar</a> -->
                     </div>
                     <br><br><br>
