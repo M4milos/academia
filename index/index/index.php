@@ -49,7 +49,7 @@
                         <img src="../img/circuito.png" style="margin-left: 25%;  width: 20%;"> <br>
                         <div class="caption text-center">
                             <div class="text-box">
-                                <input class=" button1 button" type="submit" name="acao" onclick="Treino()" value="Visualizar dados" style="margin-right: 30%; margin-top: 10%; padding: 1%;">
+                                <input class=" button1 button" type="submit" name="acao" onclick="Dados()" value="Visualizar dados" style="margin-right: 30%; margin-top: 10%; padding: 1%;">
                             </div>
                         </div>
                     </div>

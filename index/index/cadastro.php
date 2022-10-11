@@ -73,7 +73,6 @@
                         <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Cadastrar</a> -->
                     </div>
                     <br><br><br>
-                
             </form>
         </center> 
     </div>
