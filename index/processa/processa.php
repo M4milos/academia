@@ -1,6 +1,7 @@
 <?php
     try{
         session_start();
+        header('Content-Type: application/json');
         require_once('../../classes/autoload.class.php');
         require_once('../utils/utilidades.php');
     } catch (Exception $e) {
@@ -15,33 +16,47 @@
         $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
 
-        $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
-
-        if(empty($acao)){
-            $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
-        }
+        $acao = isset($_POST['acao']) ? $_POST['acao'] : "";if(empty($acao)){$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
 
         if ($acao == 'Entrar') {
-           $final =  $logar = Login::Logar($email, $senha);
+           $sair = $logar = Login::Logar($email, $senha);
         }
 
-        if($acao == 'Sair'){
+        else if($acao == 'Sair'){
             if (!empty($_SESSION['usuario'])) {    
-                $final = $logar = Login::Deslogar();
+                $sair = $logar = Login::Deslogar();
             }
         }
-        if($acao == 'Cadastrar'){
+
+        else if($acao == 'Cadastrar'){
             $cadastrar = new Login("",$nome, $email, $senha, $cpf, $tipo);
-            $final = $cadastrar->Salvar();
+            $sair = $cadastrar->Salvar();
         }
-        if ($acao == "Editar") {
+
+        else if ($acao == "Editar") {
             $editar = new Login($id,$nome,$email,$senha,$cpf,$tipo);
             $final = $editar->Editar();
+            $sair = false;
         }
-        if($final){
+        else if ($acao == "mudarNome") {
+            $final = $_SESSION['usuario']['nome'] = $nome;
+            $sair = false;
+        }
+
+        if($sair){
             header("Location: ../index/index.php");
         }
+
+        if($final){
+            echo json_encode($final);
+        }
+
+        else{
+            echo "Impossível realizar sua ação de {$acao}";
+        }
+
     } catch (Exception $e) {
         echo "Erro ao executar os comandos: ('{$e->getMessage()}')\n{$e}\n";
     }
 ?>
+

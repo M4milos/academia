@@ -45,10 +45,10 @@
     
     <div class="center"> 
         <center> 
-            <form method="post" action="../processa/processa.php">
+            <form method="post" <?php if($acao == "Editar") echo 'id="editar"';?> action="../processa/processa.php" >
                 <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
-                <input type="hidden" name="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
+                <input type="hidden" name="id" id="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
                 <b>Nome:</b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
                     <br><br><br>
@@ -69,13 +69,15 @@
                 </select>
                 <br><br><br>
                     <div class="text-box">
-                        <input class="acao btn btn-white btn-animate" type="submit" name="acao" value="<?php if($acao){ echo $acao; } else{ echo "Cadastrar";}?>" class="btn">
+                        <input class="acao btn btn-white btn-animate" type="submit" name="acao" id="acao" value="<?php if($acao){ echo $acao; } else{ echo "Cadastrar";}?>" class="btn">
                         <!-- <a href="#" class="btn btn-white btn-animate" name="acao" id="Entrar">Cadastrar</a> -->
                     </div>
                     <br><br><br>
             </form>
         </center> 
     </div>
+    <script src="../js/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="../js/ajax.js"></script>
     <script src="../js/index.js"></script>
 </body>
 </html>

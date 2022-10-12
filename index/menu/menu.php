@@ -111,15 +111,7 @@ nav{
 }
 </style>
 <header>
-        <span>
-            <?php
-                if (!empty($_SESSION['usuario'])) {
-                    echo $_SESSION['usuario']['nome'];
-                }else{
-                    echo "Visitante";
-                }
-            ?>
-        </span>
+        <span id="usuario"></span>
         <input type="checkbox" id="check">
             <label for="check">
                 <img src="../img/list.svg" alt="" id="btn" style="width: 2%; cursor: pointer;">
