@@ -38,7 +38,9 @@
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`usuario` (`nome`, `email`, `senha`,  `cpf`, `id_funcao` ) VALUES (:nome,:email,:senha,:cpf,:id_funcao)";
+                $sql = "INSERT INTO `TCC`.`usuario` (`nome`, `email`, `senha`,  `cpf`, `id_funcao` ) 
+                VALUES (:nome,:email,:senha,:cpf,:id_funcao)";
+
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
@@ -123,29 +125,6 @@
                     echo "Erro ao logar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
-
-        // public static function VerificaLogin($email, $senha){
-        //     try{
-        //         if(strlen($email) > 0 && strlen($senha) > 0){
-        //             $sql = "SELECT * FROM usuario WHERE email = :email";
-        //             $param = array(":email" => $email);
-        //             $verificado = parent::EfetuaLogin($sql,$param);
-
-        //             $sql2 = "SELECT * FROM usuario WHERE senha = :senha";
-        //             $param2 = array(":senha" => $senha);
-        //             $verificado2 = parent::EfetuaLogin($sql2,$param2);
-        //             if($verificado && $verificado2){
-        //                 if($verificado['email'] == $verificado2['email']){
-        //                     return true;
-        //                 }
-        //             }else{
-        //                 return false;
-        //             }
-        //         }
-        //     }catch(Exception $e){
-        //             throw new Exception("Erro ao verificar: ".$e->getMessage());
-        //     }
-        // }
 
         public static function Deslogar(){
             try{
