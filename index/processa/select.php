@@ -10,8 +10,9 @@
         
     }
 
-    if($acao == "Selecionar" && !empty($_SESSION['usuario'])){
+    if($acao == "Selecionar"){
         $lista = Login::ListarUsuario($tipo = 1, $info = $_SESSION['usuario']['id']);
+        var_dump($lista);
     }
     if ($lista) {
         echo json_encode($lista);

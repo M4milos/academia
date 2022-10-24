@@ -48,7 +48,9 @@ class BancoDados{
             // Preparando o script do mysql. 
             $comando = $conexao->prepare($sql); 
             // Vinculandos os parametros para apresentação, gerando um vetor[].
-            $comando = self::Vincular($comando,$param); 
+            if(!empty($param)){
+                $comando = self::Vincular($comando,$param); 
+            }
             //var_dump($comando);
             // Executando os comandos, cadeia ou sozinhos.
             $comando->execute(); 
