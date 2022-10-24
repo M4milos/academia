@@ -13,20 +13,18 @@ google.charts.load('current', {'packages':['line']});
       function drawChart() {
 
           var data = new google.visualization.DataTable();
-            data.addColumn('string','intervalo');
+            data.addColumn('number','Intervalo');
             data.addColumn('number', 'Aceleração do eixo Y'); //   ['Aceleração do eixo Y', 'Aceleração do eixo X', 'Giro do eixo Y', 'Giro do eixo X'],
             data.addColumn('number', 'Aceleração do eixo X');
             data.addColumn('number', 'Giro do eixo Y');
             data.addColumn('number', 'Giro do eixo X');
 
             result.forEach(element => {
-                data.addRows( parseInt(i) ,parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"]))});
+                data.addRows([[parseInt(i) ,parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"])]])});
         //[parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"])]}),
 
             var options = {
               title: 'Exercícios',
-              hAxis: {title: 'Intervalo',  titleTextStyle: {color: '#333'}},
-              vAxis: {minValue: 0}
             };
 
           var chart = new google.charts.Line(document.getElementById('grafico'));
