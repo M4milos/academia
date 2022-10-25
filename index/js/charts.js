@@ -1,12 +1,4 @@
 function getArduino(result){
-
-//console.log(result);
-
-// result.forEach(element => {console.log(
-  
-//   i++ +" "+ element["AcX"]+" "+ element["AcY"]+" "+element["GyX"]+" "+element["GyY"] )});
-// var elemento = result[0];
-
 google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -28,8 +20,6 @@ google.charts.load('current', {'packages':['line']});
                   parseFloat(element["GyX"])
                 ]]);
               });
-        //[parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"])]}),
-
             var options = {
               title: 'Exercícios',
             };
