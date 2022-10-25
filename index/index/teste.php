@@ -51,13 +51,18 @@
     <script type="text/javascript" src="../js/charts.js"></script>
     <script src="../js/jQuery/jquery-3.5.1.min.js"></script>
     <script src="../js/web_worker.js"></script>
+    <script src="../js/index.js"></script>
+
+
 
 </head>
 <body>
     <div>
         <table id="listar"></table>
     </div>
+    <button id="iniciar">Iniciar os gráficos</button>
     <div id="grafico" style="width: 100%; height: 500px;"></div>
-    
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

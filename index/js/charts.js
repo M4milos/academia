@@ -1,11 +1,11 @@
 function getArduino(result){
+
 //console.log(result);
 
-var i = 0;
-result.forEach(element => {console.log(
+// result.forEach(element => {console.log(
   
-  i++ +" "+ element["AcX"]+" "+ element["AcY"]+" "+element["GyX"]+" "+element["GyY"] )});
-var elemento = result[0];
+//   i++ +" "+ element["AcX"]+" "+ element["AcY"]+" "+element["GyX"]+" "+element["GyY"] )});
+// var elemento = result[0];
 
 google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
@@ -20,7 +20,14 @@ google.charts.load('current', {'packages':['line']});
             data.addColumn('number', 'Giro do eixo X');
 
             result.forEach(element => {
-                data.addRows([[parseInt(i) ,parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"])]])});
+                data.addRows([[
+                  Contador(result),
+                  parseFloat(element["AcY"]), 
+                  parseFloat(element["AcX"]),
+                  parseFloat(element["GyY"]),
+                  parseFloat(element["GyX"])
+                ]]);
+              });
         //[parseFloat(element["AcX"]), parseFloat(element["AcY"]),parseFloat(element["GyX"]),parseFloat(element["GyY"])]}),
 
             var options = {
@@ -31,3 +38,14 @@ google.charts.load('current', {'packages':['line']});
           chart.draw(data, google.charts.Line.convertOptions(options));
       }
     };
+
+
+var count = 0;   
+function Contador(result) {
+  while (count < result.length) {
+    count++;
+    return count;
+  }
+  
+};
+

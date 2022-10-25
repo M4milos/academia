@@ -10,9 +10,9 @@ function getArd() {
         data: {acao : 'Selecionar'},
         dataType : 'JSON'
     }).done(function(result){
-        console.log(result);
+        // console.log(result);
         getArduino(result);
-    }).fail(console.log("Erro"));
+    });
 }
 
 // function Atrelacao(result){
