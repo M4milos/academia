@@ -1,46 +1,43 @@
-    const botao = document.querySelector('#botao');
+if (window.Worker) {
+  const botao = document.querySelector('#botao');
 
-    botao.addEventListener('click', (event) => {
-        event.preventDefault();
+  botao.addEventListener('click', (event) => {
 
-    if (window.Worker) {
-        getArd();
-        function getArd() {
-            $.ajax({
-                url : '../processa/select_web_worker.php',
-                method : 'POST',
-                dataType : 'JSON'
-            }).done(function(result){
-            if(event.srcElement.id == "iniciar"){
-                inicia(result);
-            }else if(event.srcElement.id == "finalizar"){
-                para();
-            }
-            });
-        }
-    }else{
-        alert('Seu navegador não suporta Web Workers');
-    } 
-});
+      if(event.srcElement.id == "iniciar"){
+        console.log("Iniciando");
+        inicia();
+      }else if(event.srcElement.id == "finalizar"){
+        console.log("Finalizar");
+        para();
+      }
+      
+    
+  });
+
+}else{
+  alert('Seu navegador não suporta Web Workers');
+}
 
 var w;
 
-function inicia(result) {
+function inicia(){
   if(typeof(Worker) !== "undefined") {
     if(typeof(w) == "undefined") {
       w = new Worker("../js/beta.js");
-    //   console.log(result);
-      w.postMessage(result);
+      w.postMessage('Iniciar');
     }
-    w.onmessage = function(event) {
-      console.log(event);
-    };
-  } else {
-    console.log("Erro");
+      w.addEventListener('message', (event) => {
+          console.log(event.data);
+      });
+    }else{
+      console.log("Erro");
+    }
   }
-}
+
 
 function para() { 
-  w.terminate();
-  w = undefined;
+  if (typeof(w) !== "undefined") {
+    w.terminate();
+    w = undefined;
+  }
 }
