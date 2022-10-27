@@ -1,4 +1,6 @@
+
 function getArduino(result){
+
   google.charts.load('current', {'packages':['line']});
         google.charts.setOnLoadCallback(drawChart);
 
@@ -6,19 +8,23 @@ function getArduino(result){
 
             var data = new google.visualization.DataTable();
               data.addColumn('number','Intervalo');
-              data.addColumn('number', 'Aceleração do eixo Y'); //   ['Aceleração do eixo Y', 'Aceleração do eixo X', 'Giro do eixo Y', 'Giro do eixo X'],
+          //    data.addColumn('number', 'Aceleração do eixo Y'); //   ['Aceleração do eixo Y', 'Aceleração do eixo X', 'Giro do eixo Y', 'Giro do eixo X'],
               data.addColumn('number', 'Aceleração do eixo X');
-              data.addColumn('number', 'Giro do eixo Y');
-              data.addColumn('number', 'Giro do eixo X');
+           //   data.addColumn('number', 'Giro do eixo Y');
+           //   data.addColumn('number', 'Giro do eixo X');
 
-              result.forEach(element => {
+              result.forEach(el => {
+                el.forEach(element => {
+                  console.log(element);
                   data.addRows([[
-                    Contador(result),
-                    parseFloat(element["AcY"]), 
+                    // Math.max(el),
+                    Contador(element),
+                 //   parseFloat(element["AcY"]), 
                     parseFloat(element["AcX"]),
-                    parseFloat(element["GyY"]),
-                    parseFloat(element["GyX"])
+               //     parseFloat(element["GyY"]),
+               //     parseFloat(element["GyX"])
                   ]]);
+                });
                 });
               var options = {
                 title: 'Exercícios',
@@ -30,12 +36,13 @@ function getArduino(result){
       };
 
 
-  var count = 0;   
+  var count = 0;    
   function Contador(result) {
     while (count < result.length) {
       count++;
       return count;
     }
+    
     
   };
 

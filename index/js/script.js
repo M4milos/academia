@@ -1,3 +1,5 @@
+let datajson = [];
+
 if (window.Worker) {
   const botao = document.querySelector('#botao');
 
@@ -5,13 +7,16 @@ if (window.Worker) {
 
       if(event.srcElement.id == "iniciar"){
         console.log("Iniciando");
-        inicia();
+        inicia(); 
+
       }else if(event.srcElement.id == "finalizar"){
-        console.log("Finalizar");
+        console.log("Finalizar");        
+
+        if(datajson.length > 0)
+          getArduino(datajson);
         para();
+
       }
-      
-    
   });
 
 }else{
@@ -21,22 +26,28 @@ if (window.Worker) {
 var w;
 
 function inicia(){
-  if(typeof(Worker) !== "undefined") {
+  if(typeof(Worker) != "undefined") {
     if(typeof(w) == "undefined") {
       w = new Worker("../js/beta.js");
-      w.postMessage('Iniciar');
-    }
-      w.addEventListener('message', (event) => {
-          console.log(event.data);
-      });
+      w.onmessage = function (event) {
+        datajson.push(event.data);
+        getArduino(datajson);
+     };
+     w.postMessage('Iniciar');
+   }
+    
+      // w.addEventListener('message', (event) => {
+      //      console.log(event.data);
+      //     // // getArduino(event.data);
+      // });
     }else{
       console.log("Erro");
     }
-  }
+}
 
 
 function para() { 
-  if (typeof(w) !== "undefined") {
+  if (typeof(w) !== "undefined") { 
     w.terminate();
     w = undefined;
   }

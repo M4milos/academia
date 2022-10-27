@@ -58,7 +58,11 @@
         </div>
     </div>
 </section>
-        <footer></footer>
+        <footer>
+            <h2>
+                TESTE
+            </h2>
+        </footer>
     <script src="../js/jQuery/jquery-3.5.1.min.js"></script>
     <script src="../js/ajax.js"></script>
     <script src="../js/index.js"></script>

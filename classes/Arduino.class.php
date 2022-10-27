@@ -5,16 +5,16 @@
         private $temp;
         private $acy;
         private $acx;
-        private $gcx;
-        private $gcy;
+        private $gyx;
+        private $gyy;
 
-        public function __construct($id,$temp,$acy,$acx,$gcx,$gcy){
+        public function __construct($id,$temp,$acy,$acx,$gyx,$gyy){
             $this->setId($id);
             $this->setTemp($temp);
             $this->setAcx($acx);
             $this->setAcy($acy);
-            $this->setGcx($gcx);
-            $this->setGcy($gcy);
+            $this->setGyx($gyx);
+            $this->setGyy($gyy);
         }
 
         public function setId($id){if($id > 0){$this->id = $id;}}
@@ -29,22 +29,22 @@
         public function setAcy($acy){if($acy != ""){$this->acy = $acy;}}
         public function getAcy(){return $this->acy;}
 
-        public function setGcx($gcx){if($gcx != ""){$this->gcx = $gcx;}}
-        public function getGcx(){return $this->gcx;}
+        public function setGyx($gyx){if($gyx != ""){$this->GyX = $gyx;}}
+        public function getGyx(){return $this->GyX;}
 
-        public function setGcy($gcy){if($gcy != ""){$this->gcy = $gcy;}}
-        public function getGcy(){return $this->gcy;}
+        public function setGyy($gyy){if($gyy != ""){$this->GyY = $gyy;}}
+        public function getGyy(){return $this->GyY;}
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`arduino` (`temp`, `acx`, `acy`,  `gcx`, `gcy` ) 
-                VALUES (:temp,:acx,:acy,:gcx,:gcy)";
+                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `AcX`, `AcY`,  `GyX`, `GyY` ) 
+                VALUES (:temp,:AcX,:AcY,:GyX,:GyY)";
 
                 $param = array( ":temp" => $this->getTemp(),
-                                ":acx" => $this->getAcx(),
-                                ":acy" => $this->getAcy(),
-                                ":gcx" => $this->getGcx(),
-                                ":gcy" => $this->getGcy());
+                                ":AcX" => $this->getAcx(),
+                                ":AcY" => $this->getAcy(),
+                                ":GyX" => $this->getGyX(),
+                                ":GyY" => $this->getGyY());
                 $teste = parent::Execute($sql,$param);
                 return $teste;
             }catch(Exception $e){

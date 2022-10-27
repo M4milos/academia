@@ -29,6 +29,11 @@ body{
 footer{
     background-color: black;
     padding: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    color: white;
 }
 
 .acao {

@@ -1,0 +1,16 @@
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #D9D9D9; 
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: #D9D9D9; 
+    color: black;
+}
