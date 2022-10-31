@@ -78,10 +78,10 @@ void loop() {
   Wire.requestFrom(MPU, 14 , 1); //Solicita os dados de 14 registradores começando no registrador selecionado acima
   AcX = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_XOUT_H em AcX
   AcY = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_YOUT_H em AcY
-  //AcZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_ZOUT_H em AcZ
+  AcZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_ZOUT_H em AcZ
   GyX = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_XOUT_H em GyX
   GyY = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_YOUT_H em GyY
-  //GyZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_ZOUT_H em GyZ
+  GyZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_ZOUT_H em GyZ
 
   Serial.print("Query da temperatura: "); //Exibe mensagem de temperatura
   double temperature = (temprature_sens_read() - 32) / 1.8;   // Convete a temperatura para graus Celsius
@@ -95,8 +95,10 @@ void loop() {
 
   String aceleracaoQuery = "&acx="; //Cria a string para armazenar a aceleração
   aceleracaoQuery.concat(AcX / 2048); //Concatena a aceleração do eixo X na string aceleracaoQuery
-  aceleracaoQuery.concat("&acy="); //Concatena a aceleração do eixo X na string aceleracaoQuery 
+  aceleracaoQuery.concat("&acy="); //Concatena a aceleração do eixo Y na string aceleracaoQuery 
   aceleracaoQuery.concat(AcY / 2048); //Concatena a aceleração do eixo Y na string aceleracaoQuery
+    aceleracaoQuery.concat("&acz="); //Concatena a aceleração do eixo Z na string aceleracaoQuery 
+  aceleracaoQuery.concat(AcZ / 2048); //Concatena a aceleração do eixo Z na string aceleracaoQuery
 
   Serial.println(aceleracaoQuery);
   
@@ -106,6 +108,8 @@ void loop() {
   giroQuery.concat(GyX / 16.4); //Concatena a aceleração do eixo X na string aceleracaoQuery
   giroQuery.concat("&gyy="); //Concatena a aceleração do eixo X na string aceleracaoQuery
   giroQuery.concat(GyY / 16.4); //Concatena a aceleração do eixo Y na string aceleracaoQuery
+  giroQuery.concat("&gyz="); //Concatena a aceleração do eixo Z na string aceleracaoQuery
+  giroQuery.concat(GyZ / 16.4); //Concatena a aceleração do eixo Z na string aceleracaoQuery
 
   Serial.println(giroQuery);
 
