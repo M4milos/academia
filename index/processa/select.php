@@ -4,10 +4,12 @@
     require_once('../../classes/autoload.class.php');
     
     $id = isset($_POST['id']) ? $_POST['id'] : 0;
-    $acao = isset($_POST['acao']) ? $_POST['acao'] : "";if(empty($acao)){$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
+    $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
+    if(empty($acao)){
+        $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
+    }
     if($id){
         $lista = Login::ListarUsuario($tipo = 1, $info = $id);
-        
     }
 
     if($acao == "Selecionar"){

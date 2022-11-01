@@ -24,7 +24,7 @@ USE `TCC` ;
 DROP TABLE IF EXISTS `TCC`.`arduino` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`arduino` (
-  `id_arduino` INT(11) NOT NULL,
+  `id_arduino` INT(11) NOT NULL AUTO_INCREMENT,
   `temp_value` FLOAT NULL,
   `AcY` FLOAT NULL,
   `AcX` FLOAT NULL,
@@ -53,11 +53,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TCC`.`funcao` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`funcao` (
-  `id_funcao` INT(11) NOT NULL,
+  `id_funcao` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NULL,
   PRIMARY KEY (`id_funcao`))
 ENGINE = InnoDB;
 
+--
+-- Dumping data for table `funcao`
+--
+
+LOCK TABLES `funcao` WRITE;
+/*!40000 ALTER TABLE `funcao` DISABLE KEYS */;
+INSERT INTO `funcao` VALUES (1,'Fisoterapeuta'),(2,'Personal Trainer'),(3,'Autônomo');
+/*!40000 ALTER TABLE `funcao` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- -----------------------------------------------------
 -- Table `TCC`.`usuario`
@@ -65,7 +74,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TCC`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`usuario` (
-  `id_usuario` INT(11) NOT NULL,
+  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NULL,
   `senha` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
@@ -87,7 +96,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TCC`.`treino` ;
 
 CREATE TABLE IF NOT EXISTS `TCC`.`treino` (
-  `id_treino` INT(11) NOT NULL,
+  `id_treino` INT(11) NOT NULL AUTO_INCREMENT,
   `treino_repeticao` INT(11) NULL,
   `treino_tipo` VARCHAR(255) NULL,
   `id_usuario` INT(11) NOT NULL,

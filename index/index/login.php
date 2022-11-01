@@ -19,11 +19,6 @@
         if (empty($acao)) {
             $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
         }
-
-        //echo "Email: ".$email." Senha: ".$senha;
-
-        //echo $_SESSION['usuario'];
-        
     ?>
     <style>
         

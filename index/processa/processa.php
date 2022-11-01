@@ -16,7 +16,10 @@
         $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : "";
 
-        $acao = isset($_POST['acao']) ? $_POST['acao'] : "";if(empty($acao)){$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
+        $acao = isset($_POST['acao']) ? $_POST['acao'] : "";
+        if(empty($acao)){
+            $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
+        }
 
         if ($acao == 'Entrar') {
            $sair = $logar = Login::Logar($email, $senha);
@@ -39,7 +42,7 @@
             $sair = false;
         }
         else if ($acao == "mudarNome") {
-            $final = $_SESSION['usuario']['nome'] = $nome;
+            $final = $_SESSION['usuario']['nome'];
             $sair = false;
         }
 
