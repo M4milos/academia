@@ -78,7 +78,6 @@ CREATE TABLE IF NOT EXISTS `TCC`.`usuario` (
   `nome` VARCHAR(255) NULL,
   `senha` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
-  `cpf` VARCHAR(255) NULL,
   `id_funcao` INT(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   INDEX `fk_usuario_funcao1_idx` (`id_funcao` ASC),

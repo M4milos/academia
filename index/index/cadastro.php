@@ -3,6 +3,7 @@
     require_once('../utils/utilidades.php');
     session_start();
     $acao = isset($_POST['acao']) ? $_POST['acao'] : ""; if (empty($acao)) {$acao = isset($_GET['acao']) ? $_GET['acao'] : "";}
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : "";
 ?>
 <!DOCTYPE html>
 <html lang="PT-BR">
@@ -30,12 +31,22 @@
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 0;
     }
+    if ($erro == 1) {
+        echo "<script>
+            alert('Por favor, cadastre-se na plataforma');
+        </script>";
+    } 
         //echo "Email: ".$email." Senha: ".$senha;
 
         //echo $_SESSION['usuario'];
         
         // echo    "Tipo: ".$tipo."<br>".
         //         "Ação: ".$acao;
+        if ($acao == "Treino") {
+            $var = VerificaFuncao($acao);
+        }else{
+            $var = DefaultF($acao);
+        }
     ?>
 </head>
 <body>
@@ -49,19 +60,24 @@
                 <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
                 <input type="hidden" name="id" id="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
-                <b>Nome:</b>&ensp;
+                    <b>
+                        <?php if ($acao == "Treino") { echo "Nome";} else echo "Nome";?>  
+                    </b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
                     <br><br><br>
-                <b>Email:</b>&ensp;
+                    <b>
+                        <?php if ($acao == "Treino") { echo "Tipo";} else echo "Email";?> 
+                    </b>&ensp;
                 <input class="input" id="email" name="email" type="text" style="padding-left: 10px;" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
                     <br><br><br>
-                <b>Cpf:</b>&ensp;&ensp;
-                <input class="input" maxlength="14" id="cpf" name="cpf" type="text" style="padding-left: 10px;" value="<?php if(isset($cpf)){ echo $cpf;} else{ echo "";}?>" onkeyup="Mascara()">
+                    <b> 
+                        <?php if ($acao == "Treino") { echo "Repetições";} else echo "Senha";?>
+                    </b>&ensp;
+                <input class="input" id="senha" name="senha" style="padding-left: 10px;" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
                     <br><br><br>
-                <b>Senha:</b>&ensp;
-                    <input class="input" id="senha" name="senha" style="padding-left: 10px;" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
-                    <br><br><br>
-                <b>Tipo:</b>&ensp;
+                    <b>
+                        Tipo
+                    </b>&ensp;
                 <select class="input" id="tipo" name="tipo">
                     <?php
                         echo ListarUsuario($tipo);

@@ -6,15 +6,13 @@
         private $nome;
         private $email;
         private $senha;
-        private $cpf;
         private $funcao;
         
-        public function __construct($id,$nome,$email,$senha,$cpf,$funcao){
+        public function __construct($id,$nome,$email,$senha,$funcao){
             $this->setId($id);
             $this->setNome($nome);
             $this->setEmail($email);
             $this->setSenha($senha);
-            $this->setCpf($cpf);
             $this->setIdFuncao($funcao);
         }
 
@@ -30,21 +28,17 @@
         public function setSenha($senha){if($senha != ""){$this->senha = $senha;}}
         public function getSenha(){return $this->senha;}
 
-        public function setCpf($cpf){if($cpf != ""){$this->cpf = $cpf;}}
-        public function getCpf(){return $this->cpf;}
-
         public function setIdFuncao($funcao){if($funcao > 0){$this->funcao = $funcao;}}
         public function getIdFuncao(){return $this->funcao;}
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`usuario` (`nome`, `email`, `senha`,  `cpf`, `id_funcao` ) 
-                VALUES (:nome,:email,:senha,:cpf,:id_funcao)";
+                $sql = "INSERT INTO `TCC`.`usuario` (`nome`, `email`, `senha`,   `id_funcao` ) 
+                VALUES (:nome,:email,:senha,:id_funcao)";
 
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
-                                ":cpf" => $this->getCpf(),
                                 ":id_funcao" => $this->getIdFuncao());
                 $teste = parent::Execute($sql,$param);
                 return $teste;
@@ -80,14 +74,26 @@
                 echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
+        public static function ListarFuncao($id){
+            try{
+                $sql = "SELECT * FROM TCC.funcao";
+                $param = array();
+                if($id > 0)
+                    $sql .= " WHERE id_funcao = :id";
+                    $param = array(":id" => $id);
+                return parent::Listar($sql,$param);
+            }catch(Exception $e){
+                echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
+            }
+        }
+
 
         public function Editar(){
             try{
-                $sql = "UPDATE TCC.usuario SET nome = :nome, email = :email, senha = :senha, cpf = :cpf WHERE id_usuario = :id";
+                $sql = "UPDATE TCC.usuario SET nome = :nome, email = :email, senha = :senha WHERE id_usuario = :id";
                 $param = array( ":nome" => $this->getNome(),
                                 ":email" => $this->getEmail(),
                                 ":senha" => $this->getSenha(),
-                                ":cpf" => $this->getCpf(),
                                 ":id" => $this->getId());
                 return parent::Execute($sql,$param);
             }catch(Exception $e){
@@ -139,7 +145,6 @@
             return "Nome: ".$this->getNome()."<br>
                     Email: ".$this->getEmail()."<br>
                     Senha: ".$this->getSenha()."<br>
-                    CPF: ".$this->getCpf()."<br>
                     Função: ".$this->getIdFuncao();    
         }
     }
