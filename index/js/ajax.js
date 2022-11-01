@@ -14,31 +14,31 @@ $('#editar').submit(function(e){
         data : {id:id , nome:nome , email:email , cpf:cpf , senha:senha , tipo:tipo , acao:acao},
         dataType: 'JSON'
     }).done(function(r){
-        // console.log(acao +" "+ r);
+        console.log(acao);
         if (acao == 'Editar') {
-            console.log(nome);
-            getNome(id);
+            location.href='index.php';
         }else{
             location.href='index.php';
         }
     }).fail(function(request){
+        console.log(acao);
         console.log(request.responseText);
     });;
 });
 
-function getNome(id) {
-    $.ajax({
-        url : '../processa/select.php',
-        method : 'POST',
-        data: {id : id},
-        dataType : 'JSON'
-    }).done(function(result){
-        // console.log('GetNome' + result);
-        Listar(result[0]['nome']);
-    }).fail(function(request){
-        console.log(request.responseText);
-    });
-}
+// function getNome(id) {
+//     $.ajax({
+//         url : '../processa/select.php',
+//         method : 'POST',
+//         data: {id : id},
+//         dataType : 'JSON'
+//     }).done(function(result){
+//         // console.log('GetNome' + result);
+//         Listar(result[0]['nome']);
+//     }).fail(function(request){
+//         console.log(request.responseText);
+//     });
+// }
 
 // function Prepare(result){
 //     // console.log(result);
@@ -52,4 +52,3 @@ function Listar(nome){
     var usuario = document.querySelector('#usuario');
     usuario.innerHTML = nome;
 }
-getNome();

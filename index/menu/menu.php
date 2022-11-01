@@ -1,3 +1,5 @@
+<script src="../js/jQuery/jquery-3.5.1.min.js"></script>
+<script src="../js/ajax.js"></script>
 <style>
 *{
     margin: 0;
@@ -111,7 +113,8 @@ nav{
 }
 </style>
 <header>
-        <span id="usuario"></span>
+        <span id="usuario">
+        </span>
         <input type="checkbox" id="check">
             <label for="check">
                 <img src="../img/list.svg" alt="" id="btn" style="width: 2%; cursor: pointer;">
@@ -121,9 +124,13 @@ nav{
             <ul>
                 <li><a href="index.php">Início</a></li>
                 <li><a href="login.php">Login</a></li>
+                <li><a href="painel.php">Painel de controle</a></li>
                 <li><a href="cadastro.php<?php if(!empty($_SESSION['usuario'])){ echo "?acao=Editar";}?>  "><?php if(!empty($_SESSION['usuario'])){ echo "Editar usuario";} else{ echo "Cadastre-se";}?></a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
             </ul>
             </center>
         </nav>
     </header>
+    <script>
+        window.addEventListener('load',Listar("<?php echo $_SESSION['usuario']['nome'];?>"));
+    </script>

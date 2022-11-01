@@ -23,6 +23,26 @@
         return Exibir(array('id_funcao','funcao'),$lista, $selecao);
     }
 
+    function ListarUser($selecao){
+        $lista = Login::ListarUsuario(0,$selecao);
+        //var_dump($lista);
+        return Teste(array('id_usuario','nome'),$lista, $selecao);
+    }
+
+    function Teste($chave, $dado, $selecao = 0){
+        $str = "<option value=0>Selecione</option>";
+        $check="";
+        foreach($dado as $linha){
+            if($selecao > 0 && $linha['id_usuario'] == $selecao){
+                $check = "selected";
+            }
+            //var_dump($linha);
+            $str .= "<option ".$check." value='".$linha['id_usuario']."'>".$linha['nome']."</option>";
+            $check = "";
+        }
+        return $str;
+    }
+
     function ListarPainel($tipo, $info){
         $lista = Login::ListarUsuario($tipo, $info);
         $str = "";
@@ -35,7 +55,7 @@
             $funcao = Login::ListarFuncao($linha['id_funcao']);
             $str .= "<td>".$funcao[0]['nome']."</td>";
             $str .= "<td><a href='cadastro.php?id=".$linha['id_usuario']."&acao=Editar'>Editar</a></td>";
-            $str .= "<td><a href='../processa/processa.php?id=".$linha['id_usuario']."&acao=excluir'>Excluir</a></td>";
+            $str .= "<td><a href='../processa/processa.php?id=".$linha['id_usuario']."&acao=excluir&tabela=usuario'>Excluir</a></td>";
             $str .= "</tr>";
         }
         return $str;
@@ -43,16 +63,35 @@
 
     function VerificaFuncao($acao){
         if($acao == 'Treino'){
-            $array = array( 'values' => 'treino_nome', 'treino_tipo', 'treino_repetição');
+            $array = array('treino_tipo', 'treino_repeticao');
+            return $array;
+        }else if($acao == 'EditarTreino'){
+            $array = array('treino_tipo', 'treino_repeticao');
+            return $array;
+        }else if ($acao != 'Treino') {  
+            $array = array( 'values' => 'nome', 'email', 'senha', 'tipo');
             return $array;
         }
     }
 
-    function DefaultF($acao){
-        if ($acao != 'Treino') {  
-            $array = array( 'values' => 'nome', 'email', 'senha', 'tipo');
-            return $array;
+    function ListarTreino($tipo, $info){
+        $lista = Treino::Listar($tipo,$info);
+        $str = "";
+        foreach($lista as $linha){
+            $str .= "<tr>";
+            $str .= "<td>".$linha['id_treino']."</td>";
+            $str .= "<td>".$linha['treino_repeticao']."</td>";
+            $str .= "<td>".$linha['treino_tipo']."</td>";
+
+            $funcao = Login::ListarUsuario(1,$linha['id_usuario']);
+
+            $str .= "<td>".$funcao[0]['nome']."</td>";
+            $str .= "<td><a href='cadastro.php?id=".$linha['id_treino']."&acao=EditarTreino '>Editar</a></td>";
+            $str .= "<td><a href='../processa/processa.php?id=".$linha['id_treino']."&acao=excluir&tabela=treino'>Excluir</a></td>";
+            $str .= "</tr>";
         }
+        return $str;
+
     }
 
 ?>

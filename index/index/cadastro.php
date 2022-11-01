@@ -20,21 +20,23 @@
         $id = $list[0]['id_usuario'];
         $nome = $list[0]['nome'];
         $email = $list[0]['email'];
-        $cpf = $list[0]['cpf'];
         $senha = $list[0]['senha'];
         $tipo = $list[0]['id_funcao'];
-    }else{
+    }
+    else{
         $id = isset($_POST['id']) ? $_POST['id'] : 0;
+        if(empty($id)){
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+        }
         $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
         $email = isset($_POST['email']) ? $_POST['email'] : "";
-        $cpf = isset($_POST['cpf']) ? $_POST['cpf'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : 0;
     }
     if ($erro == 1) {
-        echo "<script>
-            alert('Por favor, cadastre-se na plataforma');
-        </script>";
+        echo "  <script>
+                    alert('Por favor, cadastre-se na plataforma');
+                </script>";
     } 
         //echo "Email: ".$email." Senha: ".$senha;
 
@@ -42,10 +44,16 @@
         
         // echo    "Tipo: ".$tipo."<br>".
         //         "Ação: ".$acao;
-        if ($acao == "Treino") {
+        if ($acao) {
             $var = VerificaFuncao($acao);
-        }else{
-            $var = DefaultF($acao);
+            // var_dump($var);
+            if($acao == "EditarTreino"){
+                $campo = Treino::Listar(1,$id);
+                $tipo = $campo[0]['id_treino'];
+                // echo $id;   
+                // var_dump($campo);
+                // echo $campo[0]['treino_tipo'];
+            }
         }
     ?>
 </head>
@@ -57,30 +65,43 @@
     <div class="center"> 
         <center> 
             <form method="post" <?php if($acao == "Editar") echo 'id="editar"';?> action="../processa/processa.php" >
-                <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
+                <b><p><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == "Editar") {echo "Editar usuario";}  elseif($acao == "EditarTreino") {echo "Editar Treino";} else{echo "Cadastrar do sistema";} ?><p id="Selecionar"></p></p></b>
                 <br>
                 <input type="hidden" name="id" id="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
+                <?php
+                    if($acao == "Treino" || $acao == "EditarTreino");
+                    echo "<!--";
+                ?>
                     <b>
-                        <?php if ($acao == "Treino") { echo "Nome";} else echo "Nome";?>  
+                        Nome
                     </b>&ensp;
                 <input class="input" id="nome" name="nome" type="text" style="padding-left: 10px;" value="<?php if(isset($nome)){ echo $nome;} else{ echo "";}?>">
                     <br><br><br>
+                <?php
+                    if($acao == "Treino" || $acao == "EditarTreino")
+                    echo "-->";
+                ?>
                     <b>
-                        <?php if ($acao == "Treino") { echo "Tipo";} else echo "Email";?> 
+                        <?php if ($acao == "Treino" || $acao == "EditarTreino") { echo "Tipo";} else echo "Email";?> 
                     </b>&ensp;
-                <input class="input" id="email" name="email" type="text" style="padding-left: 10px;" value="<?php if(isset($email)){ echo $email;} else{ echo "";}?>">
+                <input class="input" id="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[0]; else{ echo "email"; }?>" name="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[0]; else{ echo "email"; }?>" type="text" style="padding-left: 10px;" value="<?php if($acao != "EditarTreino"){echo $email;} elseif($acao == "EditarTreino"){ echo $campo[0]['treino_tipo'];}else{ echo "";}?>">
                     <br><br><br>
                     <b> 
-                        <?php if ($acao == "Treino") { echo "Repetições";} else echo "Senha";?>
+                        <?php if ($acao == "Treino" || $acao == "EditarTreino") { echo "Repetições";} else echo "Senha";?>
                     </b>&ensp;
-                <input class="input" id="senha" name="senha" style="padding-left: 10px;" type="password" autocomplete="off" value="<?php if(isset($senha)){ echo $senha;} else{ echo "";}?>">
+                <input class="input" id="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[1]; else{ echo "senha"; }?>" name="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[1]; else{ echo "senha"; }?>" style="padding-left: 10px;" type="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo "text"; else{ echo "password"; }?>" autocomplete="off" value="<?php if($acao != "EditarTreino"){ echo $senha;} elseif($acao == "EditarTreino"){ echo $campo[0]['treino_repeticao'];} else{ echo "";}?>">
                     <br><br><br>
                     <b>
                         Tipo
                     </b>&ensp;
                 <select class="input" id="tipo" name="tipo">
                     <?php
+                    if ($acao == "Treino" || $acao == "EditarTreino") { 
+                        echo ListarUser($tipo); 
+                    }else{
                         echo ListarUsuario($tipo);
+                    }
+                        
                     ?>
                 </select>
                 <br><br><br>
