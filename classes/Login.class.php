@@ -65,19 +65,10 @@
             }
         }
 
-        public static function ListarPersonal(){
-            try{
-                $sql = "SELECT * FROM TCC.funcao";
-                $param = array(); 
-                return parent::Listar($sql,$param);
-            }catch(Exception $e){
-                echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
-            }
-        }
         public static function ListarFuncao($id){
             try{
                 $sql = "SELECT * FROM TCC.funcao";
-                $param = array();
+                $param = array(); 
                 if($id > 0)
                     $sql .= " WHERE id_funcao = :id";
                     $param = array(":id" => $id);

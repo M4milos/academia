@@ -18,7 +18,7 @@
     }
 
     function ListarUsuario($selecao){
-        $lista = Login::ListarPersonal();
+        $lista = Login::ListarFuncao($selecao);
         //var_dump($lista);
         return Exibir(array('id_funcao','funcao'),$lista, $selecao);
     }
