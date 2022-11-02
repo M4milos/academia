@@ -6,45 +6,89 @@
     $tipo = 0;
     $info = "";  
 ?>
-<!DOCTYPE html>
-<html lang="PT-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php if($titulo) echo $titulo; else ""; ?></title>
+    <link rel="stylesheet" href="../css/painel.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
+
 <body>
-    <b>Usuarios</b>
-    <table border="1">
-        <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Senha</td>
-            <td>Função</td>
-            <td>Editar</td>
-            <td>Excluir</td>
-        </tr>
-        <?php
-            echo ListarPainel($tipo, $info);
-        ?>
-
-    </table>
-    <b>Treino</b>
-    <table border="1">        
-        <tr>
-            <td>Id</td>
-            <td>Repetições</td>
-            <td>Tipo</td>
-            <td>Usuario</td>
-            <td>Editar</td>
-            <td>Excluir</td>
-        </tr>
-        <?php
-            echo ListarTreino($tipo, $info);
-        ?>
-    </table>
-
+    <?php
+        require_once('../menu/menu.php');
+    ?>
+    <div class="content">
+        <div class="row" style="margin-left: 13%;">
+            <div class="col-sm-6">
+                <h2 style="margin-top: 3%; margin-left: 35%; width: 25%;">Painel de Controle</h2>
+            </div>
+        </div>
+    </div>
+    <center>
+        <br>
+        <h2>Dados do Usuário</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Senha</th>
+                    <th scope="col">Função</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+                <?php
+                    echo ListarPainel($tipo, $info);
+                ?>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h2>Dados de Treinos</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Repetições</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+                <?php
+                    echo ListarTreino($tipo, $info);
+                ?>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                    <td scope="row">#</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
 </html>
