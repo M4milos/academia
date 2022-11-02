@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `TCC`.`arduino` (
   `AcZ` FLOAT NULL,
   `GyX` FLOAT NULL,
   `GyY` FLOAT NULL,
+  `GyZ` FLOAT NULL,
   PRIMARY KEY (`id_arduino`))
 ENGINE = InnoDB;
 
