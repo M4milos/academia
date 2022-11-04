@@ -3,22 +3,12 @@
     class Arduino extends BancoDados{
         private $id;
         private $temp;
-        private $acy;
-        private $acx;
-        private $acz;
-        private $gyx;
-        private $gyy;
-        private $gyz;
+        private $acc;
 
-        public function __construct($id,$temp,$acy,$acx,$acz,$gyx,$gyy,$gyz){
+        public function __construct($id,$temp,$acc){
             $this->setId($id);
             $this->setTemp($temp);
-            $this->setAcx($acx);
-            $this->setAcy($acy);
-            $this->setAcz($acz);
-            $this->setGyx($gyx);
-            $this->setGyy($gyy);
-            $this->setGyz($gyz);
+            $this->setAcx($acc);
         }
 
         public function setId($id){if($id > 0){$this->id = $id;}}
@@ -27,36 +17,16 @@
         public function setTemp($temp){if($temp != ""){$this->temp = $temp;}}
         public function getTemp(){return $this->temp;}
 
-        public function setAcx($acx){if($acx != ""){$this->acx = $acx;}}
-        public function getAcx(){return $this->acx;}
-
-        public function setAcy($acy){if($acy != ""){$this->acy = $acy;}}
-        public function getAcy(){return $this->acy;}
-
-        public function setAcz($acz){if($acz != ""){$this->acz = $acz;}}
-        public function getAcz(){return $this->acz;}
-
-        public function setGyx($gyx){if($gyx != ""){$this->GyX = $gyx;}}
-        public function getGyx(){return $this->GyX;}
-
-        public function setGyy($gyy){if($gyy != ""){$this->GyY = $gyy;}}
-        public function getGyy(){return $this->GyY;}
-
-        public function setGyz($gyz){if($gyz != ""){$this->GyZ = $gyz;}}
-        public function getGyz(){return $this->GyZ;}
+        public function setAcc($acc){if($acc != ""){$this->acc = $acc;}}
+        public function getAcc(){return $this->acc;}
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `AcX`, `AcY`, `AcZ`, `GyX`, `GyY`, `GyZ`) 
-                VALUES (:temp,:AcX,:AcY,:GyX,:GyY)";
+                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `Acc`) 
+                VALUES (:temp,:Acc)";
 
                 $param = array( ":temp" => $this->getTemp(),
-                                ":AcX" => $this->getAcx(),
-                                ":AcY" => $this->getAcy(),
-                                ":AcZ" => $this->getAcz(),
-                                ":GyX" => $this->getGyX(),
-                                ":GyY" => $this->getGyY(),
-                                ":GyZ" => $this->getGyz());
+                                ":Acc" => $this->getAcc());
                 $teste = parent::Execute($sql,$param);
                 return $teste;
             }catch(Exception $e){

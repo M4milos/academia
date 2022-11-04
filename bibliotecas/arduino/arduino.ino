@@ -18,10 +18,11 @@ const char ssid[] = "linksys"; //Nome da rede  IFC: linksys
 const char password[] = "123456789"; //Senha da rede IFC: 123456789
 
 String HOST_NAME = "http://192.168.1.100"; // Troque para o ip da sua máquina  'pc ifc: 192.168.1.100'
-String PHP_FILE_NAME   = "/teste/teste.php";  //Troque para o nome do seu arquivo php
+String PHP_FILE_NAME   = "/academia/index/processa/arduino.php";  //Troque para o nome do seu arquivo php
 
 const int MPU = 0x68; //Endereço do MPU6050
 int16_t AcX, AcY, AcZ, GyX, GyY, GyZ; //Variáveis para armazenar os dados do MPU6050
+double Acc=0;
 
 void setup() { 
   Wire.begin(); //Inicia a comunicação I2C
@@ -57,18 +58,19 @@ void setup() {
   Wire.endTransmission(1);
 
   Serial.begin(115200); //Inicia a comunicação serial
-   
-  WiFi.begin(ssid, password); //Conecta na rede
-  Serial.print("Conectando na rede WiFi"); 
-  while(WiFi.status() != WL_CONNECTED) { //Aguarda a conexão
-    delay(500); 
-    Serial.print("."); 
-  } 
 
-  Serial.println("");
-  Serial.print("Conectado ao ip: "); //Exibe mensagem de conexão
-  Serial.println(WiFi.localIP()); //Exibe o ip obtido
+   /*
+    WiFi.begin(ssid, password); //Conecta na rede
+    Serial.print("Conectando na rede WiFi"); 
+    while(WiFi.status() != WL_CONNECTED) { //Aguarda a conexão
+      delay(500); 
+      Serial.print("."); 
+    } 
   
+    Serial.println("");
+    Serial.print("Conectado ao ip: "); //Exibe mensagem de conexão
+    Serial.println(WiFi.localIP()); //Exibe o ip obtido
+  */
 }
 
 void loop() {
@@ -79,44 +81,70 @@ void loop() {
   AcX = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_XOUT_H em AcX
   AcY = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_YOUT_H em AcY
   AcZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador ACCEL_ZOUT_H em AcZ
-  GyX = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_XOUT_H em GyX
-  GyY = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_YOUT_H em GyY
-  GyZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_ZOUT_H em GyZ
+  /*
+   * Pegando os dados do giro
+   * 
+    GyX = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_XOUT_H em GyX
+    GyY = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_YOUT_H em GyY
+    GyZ = Wire.read()<<8|Wire.read(); //Armazena os dados do registrador GYRO_ZOUT_H em GyZ
+  */
 
-  Serial.print("Query da temperatura: "); //Exibe mensagem de temperatura
+  AcX = AcX / 2048;
+  AcY = AcY / 2048;
+  AcZ = AcZ / 2048;
+
+  Serial.println(AcX);
+  Serial.println(AcY);
+  Serial.println(AcZ);
+  
+  Acc =  sqrt((abs(AcX^2)) + (abs(AcY^2)) + (abs(AcZ^2))); //Média da aceleração
+  
   double temperature = (temprature_sens_read() - 32) / 1.8;   // Convete a temperatura para graus Celsius
   
   String tempQuery = "?temperature="; //Cria a string para armazenar a temperatura
   tempQuery.concat(temperature); //Concatena a temperatura na string tempQuery
 
-  Serial.println(tempQuery);
+  String mediaAceleracaoQuery = "&acc=";
+  mediaAceleracaoQuery.concat(Acc);
 
-  Serial.print("Query do acelerometro: "); //Exibe mensagem do acelerometro
+  /*
 
-  String aceleracaoQuery = "&acx="; //Cria a string para armazenar a aceleração
-  aceleracaoQuery.concat(AcX / 2048); //Concatena a aceleração do eixo X na string aceleracaoQuery
-  aceleracaoQuery.concat("&acy="); //Concatena a aceleração do eixo Y na string aceleracaoQuery 
-  aceleracaoQuery.concat(AcY / 2048); //Concatena a aceleração do eixo Y na string aceleracaoQuery
+    Apresentação dos dados:
+  
+  */
+
+
+
+  Serial.println("Query da temperatura: " + tempQuery); //Exibe mensagem de temperatura
+  
+  Serial.println("Query aceleracão: " + mediaAceleracaoQuery);
+
+  /*
+    String aceleracaoQuery = "&acx="; //Cria a string para armazenar a aceleração
+    aceleracaoQuery.concat(AcX / 2048); //Concatena a aceleração do eixo X na string aceleracaoQuery
+    aceleracaoQuery.concat("&acy="); //Concatena a aceleração do eixo Y na string aceleracaoQuery 
+    aceleracaoQuery.concat(AcY / 2048); //Concatena a aceleração do eixo Y na string aceleracaoQuery
     aceleracaoQuery.concat("&acz="); //Concatena a aceleração do eixo Z na string aceleracaoQuery 
-  aceleracaoQuery.concat(AcZ / 2048); //Concatena a aceleração do eixo Z na string aceleracaoQuery
-
-  Serial.println(aceleracaoQuery);
+    aceleracaoQuery.concat(AcZ / 2048); //Concatena a aceleração do eixo Z na string aceleracaoQuery
   
-  Serial.print("Query do giro: "); //Exibe mensagem do giro
-
-  String giroQuery = "&gyx="; //Cria a string para armazenar a aceleração
-  giroQuery.concat(GyX / 16.4); //Concatena a aceleração do eixo X na string aceleracaoQuery
-  giroQuery.concat("&gyy="); //Concatena a aceleração do eixo X na string aceleracaoQuery
-  giroQuery.concat(GyY / 16.4); //Concatena a aceleração do eixo Y na string aceleracaoQuery
-  giroQuery.concat("&gyz="); //Concatena a aceleração do eixo Z na string aceleracaoQuery
-  giroQuery.concat(GyZ / 16.4); //Concatena a aceleração do eixo Z na string aceleracaoQuery
-
-  Serial.println(giroQuery);
-
-  String url = HOST_NAME + PHP_FILE_NAME + tempQuery + aceleracaoQuery + giroQuery; //Concatena a url completa
+    Serial.println(aceleracaoQuery);
+    
+    Serial.print("Query do giro: "); //Exibe mensagem do giro
+ 
+    Querys do giroscópio para
+    
+    String giroQuery = "&gyx="; //Cria a string para armazenar a aceleração
+    giroQuery.concat(GyX / 16.4); //Concatena a aceleração do eixo X na string aceleracaoQuery
+    giroQuery.concat("&gyy="); //Concatena a aceleração do eixo X na string aceleracaoQuery
+    giroQuery.concat(GyY / 16.4); //Concatena a aceleração do eixo Y na string aceleracaoQuery
+    giroQuery.concat("&gyz="); //Concatena a aceleração do eixo Z na string aceleracaoQuery
+    giroQuery.concat(GyZ / 16.4); //Concatena a aceleração do eixo Z na string aceleracaoQuery
   
-  Serial.print("URL: "); //Exibe mensagem de url
-  Serial.println(url); //Exibe a url completa
+    Serial.println(giroQuery);
+  */
+  String url = HOST_NAME + PHP_FILE_NAME + tempQuery + mediaAceleracaoQuery; //Concatena a url completa
+  
+  Serial.println("URL: " + url); //Exibe mensagem de url
 
 /*
   Serial.println(tempQuery);
@@ -126,7 +154,7 @@ void loop() {
   Serial.print("Giro eixo X = "); Serial.println(GyX);
   Serial.print("Giro eixo Y = "); Serial.println(GyY);
 */
-
+/*
   delay(1000);
   
   HTTPClient http; //Cria um objeto http
@@ -146,5 +174,5 @@ void loop() {
   }
 
   http.end();
-  
+  */
 }

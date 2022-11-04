@@ -26,12 +26,7 @@ DROP TABLE IF EXISTS `TCC`.`arduino` ;
 CREATE TABLE IF NOT EXISTS `TCC`.`arduino` (
   `id_arduino` INT(11) NOT NULL AUTO_INCREMENT,
   `temp_value` FLOAT NULL,
-  `AcY` FLOAT NULL,
-  `AcX` FLOAT NULL,
-  `AcZ` FLOAT NULL,
-  `GyX` FLOAT NULL,
-  `GyY` FLOAT NULL,
-  `GyZ` FLOAT NULL,
+  `Acc` FLOAT NULL
   PRIMARY KEY (`id_arduino`))
 ENGINE = InnoDB;
 
@@ -132,31 +127,6 @@ CREATE TABLE IF NOT EXISTS `TCC`.`exercicio_has_treino` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `TCC`.`arduino_has_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `TCC`.`arduino_has_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `TCC`.`arduino_has_usuario` (
-  `arduino_id_arduino` INT(11) NOT NULL,
-  `usuario_id_usuario` INT(11) NOT NULL,
-  PRIMARY KEY (`arduino_id_arduino`, `usuario_id_usuario`),
-  INDEX `fk_arduino_has_usuario_usuario1_idx` (`usuario_id_usuario` ASC),
-  INDEX `fk_arduino_has_usuario_arduino1_idx` (`arduino_id_arduino` ASC),
-  CONSTRAINT `fk_arduino_has_usuario_arduino1`
-    FOREIGN KEY (`arduino_id_arduino`)
-    REFERENCES `TCC`.`arduino` (`id_arduino`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_arduino_has_usuario_usuario1`
-    FOREIGN KEY (`usuario_id_usuario`)
-    REFERENCES `TCC`.`usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
