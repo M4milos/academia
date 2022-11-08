@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `TCC`.`arduino` ;
 CREATE TABLE IF NOT EXISTS `TCC`.`arduino` (
   `id_arduino` INT(11) NOT NULL AUTO_INCREMENT,
   `temp_value` FLOAT NULL,
-  `Acc` FLOAT NULL
+  `acc` FLOAT NULL
   PRIMARY KEY (`id_arduino`))
 ENGINE = InnoDB;
 

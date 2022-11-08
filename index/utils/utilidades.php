@@ -54,7 +54,7 @@
             $str .= "<td>".$linha['senha']."</td>";
             $funcao = Login::ListarFuncao($linha['id_funcao']);
             $str .= "<td>".$funcao[0]['nome']."</td>";
-            $str .= "<td><a href='cadastro.php?id=".$linha['id_usuario']."&acao=Editar'>Editar</a></td>";
+            $str .= "<td><a href='cadastro.php?id=".$linha['id_usuario']."&acao=Editar&tabela='>Editar</a></td>";
             $str .= "<td><a href='../processa/processa.php?id=".$linha['id_usuario']."&acao=excluir&tabela=usuario'>Excluir</a></td>";
             $str .= "</tr>";
         }
@@ -86,7 +86,7 @@
             $funcao = Login::ListarUsuario(1,$linha['id_usuario']);
 
             $str .= "<td>".$funcao[0]['nome']."</td>";
-            $str .= "<td><a href='cadastro.php?id=".$linha['id_treino']."&acao=EditarTreino '>Editar</a></td>";
+            $str .= "<td><a href='cadastro.php?id=".$linha['id_treino']."&acao=EditarTreino'>Editar</a></td>";
             $str .= "<td><a href='../processa/processa.php?id=".$linha['id_treino']."&acao=excluir&tabela=treino'>Excluir</a></td>";
             $str .= "</tr>";
         }

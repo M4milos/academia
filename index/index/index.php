@@ -16,7 +16,7 @@
             location.href='cadastro.php?acao=Treino';
         }
         function Dados(){
-            location.href='mostrar.php';
+            location.href='teste.php';
         }
     </script>
 

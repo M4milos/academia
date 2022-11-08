@@ -26,27 +26,6 @@ $('#editar').submit(function(e){
     });;
 });
 
-// function getNome(id) {
-//     $.ajax({
-//         url : '../processa/select.php',
-//         method : 'POST',
-//         data: {id : id},
-//         dataType : 'JSON'
-//     }).done(function(result){
-//         // console.log('GetNome' + result);
-//         Listar(result[0]['nome']);
-//     }).fail(function(request){
-//         console.log(request.responseText);
-//     });
-// }
-
-// function Prepare(result){
-//     // console.log(result);
-//     for(var i = 0; i < result.length; i++){
-//         Listar(result[i].nome);
-//     }
-// }
-
 function Listar(nome){
     // console.log(nome);
     var usuario = document.querySelector('#usuario');

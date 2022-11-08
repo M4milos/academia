@@ -99,7 +99,7 @@ void loop() {
   
   Acc =  sqrt((abs(AcX^2)) + (abs(AcY^2)) + (abs(AcZ^2))); //Média da aceleração
   
-  double temperature = (temprature_sens_read() - 32) / 1.8;   // Convete a temperatura para graus Celsius
+  double temperature = (temprature_sens_read() - 32) * 5/9;   // Convete a temperatura para graus Celsius
   
   String tempQuery = "?temperature="; //Cria a string para armazenar a temperatura
   tempQuery.concat(temperature); //Concatena a temperatura na string tempQuery

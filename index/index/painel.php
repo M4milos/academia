@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php if($titulo) echo $titulo; else ""; ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
     <link rel="stylesheet" href="../css/painel.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
@@ -47,17 +47,6 @@
                     echo ListarPainel($tipo, $info);
                 ?>
             </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tr>
-            </tbody>
         </table>
         <br>
         <h2>Dados de Treinos</h2>
@@ -76,16 +65,6 @@
                     echo ListarTreino($tipo, $info);
                 ?>
             </thead>
-            <tbody>
-                <tr>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                    <td scope="row">#</td>
-                </tr>
-            </tbody>
         </table>
     </center>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

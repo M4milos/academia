@@ -8,7 +8,6 @@ if (window.Worker) {
       if(event.srcElement.id == "iniciar"){
         console.log("Iniciando");
         inicia(); 
-
       }else if(event.srcElement.id == "finalizar"){
         console.log("Finalizar");        
 
@@ -30,17 +29,12 @@ function inicia(){
     if(typeof(w) == "undefined") {
       w = new Worker("../js/beta.js");
       w.onmessage = function (event) {
-        datajson.push(event.data);
-        getArduino(datajson);
+        console.log(event.data);
+        getArduino(event.data);
      };
      w.postMessage('Iniciar');
-   }
-    
-      // w.addEventListener('message', (event) => {
-      //      console.log(event.data);
-      //     // // getArduino(event.data);
-      // });
-    }else{
+   } 
+  }else{
       console.log("Erro");
     }
 }

@@ -8,7 +8,7 @@
         public function __construct($id,$temp,$acc){
             $this->setId($id);
             $this->setTemp($temp);
-            $this->setAcx($acc);
+            $this->setAcc($acc);
         }
 
         public function setId($id){if($id > 0){$this->id = $id;}}
@@ -22,7 +22,7 @@
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `Acc`) 
+                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `acc`) 
                 VALUES (:temp,:Acc)";
 
                 $param = array( ":temp" => $this->getTemp(),
@@ -49,10 +49,6 @@
                 echo "Erro ao listar: ('{$e->getMessage()}')\n{$e}\n";
             }
         }
-
-        
-
-
     }
     
 ?>
