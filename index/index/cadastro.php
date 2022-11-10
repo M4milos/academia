@@ -11,11 +11,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif(!empty($_SESSION['usuario'])) {echo "Editar usuario";} else{echo "Cadastrar no sistema";} ?></title>
+<title><?php if($acao == "Treino"){echo "Cadastrar treino";} elseif($acao == 'Editar') {echo "Editar usuario";} elseif($acao=='EditarTreino'){echo "Editar Treino";} else{echo "Cadastrar no sistema";} ?></title>
     <link rel="stylesheet" href="../css/estilo.css">
     <?php
 
-    if (!empty($_SESSION['usuario']) && $acao == "Editar") {
+    if (!empty($_SESSION['usuario']) && $acao == "Editar" || !empty($_SESSION['usuario']) && $acao == "EditarTreino") {
         $list = Login::ListarUsuario($tipo = 1, $info = $_SESSION['usuario']['id']);
         $id = $list[0]['id_usuario'];
         $nome = $list[0]['nome'];
@@ -50,6 +50,9 @@
             if($acao == "EditarTreino"){
                 $campo = Treino::Listar(1,$id);
                 $tipo = $campo[0]['id_treino'];
+                if($tipo == null){
+                    header('Location: index.php?erro=2');
+                }
                 // echo $id;   
                 // var_dump($campo);
                 // echo $campo[0]['treino_tipo'];
@@ -69,8 +72,8 @@
                 <br>
                 <input type="hidden" name="id" id="id" value="<?php if(isset($id)){ echo $id;} else{ echo "";}?>">
                 <?php
-                    if($acao == "Treino" || $acao == "EditarTreino");
-                    echo "<!--";
+                    if($acao == "Treino" || $acao == "EditarTreino")
+                        echo "<!--";
                 ?>
                     <b>
                         Nome
@@ -92,7 +95,13 @@
                 <input class="input" id="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[1]; else{ echo "senha"; }?>" name="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo $var[1]; else{ echo "senha"; }?>" style="padding-left: 10px;" type="<?php if($acao == 'Treino' || $acao == "EditarTreino") echo "text"; else{ echo "password"; }?>" autocomplete="off" value="<?php if($acao != "EditarTreino"){ echo $senha;} elseif($acao == "EditarTreino"){ echo $campo[0]['treino_repeticao'];} else{ echo "";}?>">
                     <br><br><br>
                     <b>
-                        Tipo
+                        <?php
+                            if($acao == "Treino" || $acao == "EditarTreino"){
+                                echo "Usuário";
+                            }else{
+                                echo "Tipo";
+                            }
+                        ?>
                     </b>&ensp;
                 <select class="input" id="tipo" name="tipo">
                     <?php

@@ -123,8 +123,16 @@ nav{
             <center>
             <ul>
                 <li><a href="index.php">Início</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="painel.php">Painel de controle</a></li>
+                <?php
+                    if(empty($_SESSION['usuario'])) {
+                        echo '<li><a href="login.php">Login</a></li>';
+                    }
+                ?>
+                <?php
+                    if(!empty($_SESSION['usuario'])) {
+                        echo '<li><a href="mostrar.php">Visualizar gráficos</a></li>';
+                    }
+                ?>
                 <li><a href="cadastro.php<?php if(!empty($_SESSION['usuario'])){ echo "?acao=Editar";}?>  "><?php if(!empty($_SESSION['usuario'])){ echo "Editar usuario";} else{ echo "Cadastre-se";}?></a></li>
                 <li><a href="../processa/processa.php?acao=Sair">Sair</a></li>
             </ul>

@@ -1,5 +1,16 @@
 <?php
     session_start();
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : "";
+
+    if ($erro == 2) {
+        echo "  <script>
+                    if(confirm('Cadastre um treino antes de tentar edita-lo!') == true){
+                        location.href = 'index.php';
+                    }else{
+                        location.href = 'index.php';
+                    }
+                </script>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +27,7 @@
             location.href='cadastro.php?acao=Treino';
         }
         function Dados(){
-            location.href='teste.php';
+            location.href='cadastro.php?acao=EditarTreino';
         }
     </script>
 
@@ -49,7 +60,7 @@
                         <img src="../img/circuito.png" style="margin-left: 25%;  width: 20%;"> <br>
                         <div class="caption text-center">
                             <div class="text-box">
-                                <input class=" button1 button" type="submit" name="acao" onclick="Dados()" value="Visualizar dados" style="margin-right: 30%; margin-top: 10%; padding: 1%;">
+                                <input class=" button1 button" type="submit" name="acao" onclick="Dados()" value="Editar Treino" style="margin-right: 30%; margin-top: 10%; padding: 1%;">
                             </div>
                         </div>
                     </div>
@@ -59,9 +70,6 @@
     </div>
 </section>
         <footer>
-            <h2>
-                TESTE
-            </h2>
         </footer>
     <script src="../js/jQuery/jquery-3.5.1.min.js"></script>
     <script src="../js/ajax.js"></script>

@@ -25,24 +25,27 @@ if (window.Worker) {
 var w;
 
 function inicia(){
-  if(typeof(Worker) != "undefined") {
-    if(typeof(w) == "undefined") {
-      w = new Worker("../js/beta.js");
-      w.onmessage = function (event) {
-        console.log(event.data);
-        getArduino(event.data);
-     };
-     w.postMessage('Iniciar');
-   } 
-  }else{
-      console.log("Erro");
-    }
+  
+  getArduino();
+
+  // if(typeof(Worker) != "undefined") {
+  //   if(typeof(w) == "undefined") {
+  //     w = new Worker("../js/beta.js");
+  //     w.onmessage = function (event) {
+  //       console.log(event.data);
+  //       getArduino(event.data);
+  //    };
+  //    w.postMessage('Iniciar');
+  //  } 
+  // }else{
+  //     console.log("Erro");
+  //   }
 }
 
 
 function para() { 
-  if (typeof(w) !== "undefined") { 
-    w.terminate();
-    w = undefined;
-  }
+  // if (typeof(w) !== "undefined") { 
+  //   w.terminate();
+  //   w = undefined;
+  // }
 }

@@ -6,13 +6,13 @@
 }
 body {
     font-family: 'Open Sans', sans-serif;
+    background-image: url('../../../../img/acad2.jpg');
 }
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: black;
 }
 .content {
     background-color: #fff;
@@ -464,48 +464,3 @@ input:-webkit-autofill
         width: 100%;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

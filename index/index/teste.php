@@ -49,6 +49,7 @@
 <body>
     <button id="rand">Rand</button>
 <script>
+
     const botao = addEventListener('click', function(ev){
         ev.preventDefault();
         let teste = Math.floor(Math.random() * 16);

@@ -22,17 +22,17 @@ function ValidarSenha(){
     }
 }
 
-function IniciarGrafico() {
-    if (typeof(Worker) !== "undefined") {
-        if(typeof(w) == "undefined"){
-            w = new Worker("web_worker.js");
-        }
-        w.onmessage = function(event) {
-            document.getElementById("grafico").innerHTML = event.data;
-        }
-    } else {
-        document.getElementById("grafico").innerHTML = "Sorry! No Web Worker support.";
-    }
+// function IniciarGrafico() {
+//     if (typeof(Worker) !== "undefined") {
+//         if(typeof(w) == "undefined"){
+//             w = new Worker("web_worker.js");
+//         }
+//         w.onmessage = function(event) {
+//             document.getElementById("grafico").innerHTML = event.data;
+//         }
+//     } else {
+//         document.getElementById("grafico").innerHTML = "Sorry! No Web Worker support.";
+//     }
     
-}
+// }
 
