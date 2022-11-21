@@ -3,11 +3,13 @@
     class Arduino extends BancoDados{
         private $id;
         private $temp;
+        private $mov;
         private $acc;
 
-        public function __construct($id,$temp,$acc){
+        public function __construct($id,$temp,$mov, $acc){
             $this->setId($id);
             $this->setTemp($temp);
+            $this->setMov($mov);
             $this->setAcc($acc);
         }
 
@@ -17,15 +19,19 @@
         public function setTemp($temp){if($temp != ""){$this->temp = $temp;}}
         public function getTemp(){return $this->temp;}
 
+        public function setMov($mov){if($mov != ""){$this->mov = $mov;}}
+        public function getMov(){return $this->mov;}
+
         public function setAcc($acc){if($acc != ""){$this->acc = $acc;}}
         public function getAcc(){return $this->acc;}
 
         public function Salvar(){
             try{
-                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `acc`) 
-                VALUES (:temp,:Acc)";
+                $sql = "INSERT INTO `TCC`.`arduino` (`temp_value`, `mov`,`acc`) 
+                VALUES (:temp,:mov, :Acc)";
 
                 $param = array( ":temp" => $this->getTemp(),
+                                ":mov" => $this->getMov(),
                                 ":Acc" => $this->getAcc());
                 $teste = parent::Execute($sql,$param);
                 return $teste;

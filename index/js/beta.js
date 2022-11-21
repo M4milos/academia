@@ -1,11 +1,8 @@
-
-
-
 this.onmessage = function(message) {
     if(message.data === 'Iniciar') {
         setInterval(function () {
             getArd();
-        }, 5000);
+        }, 500);
     }
 }
 

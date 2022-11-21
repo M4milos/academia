@@ -23,6 +23,7 @@
             <button class="button1 button" style="padding: 1%; margin-top: 2%;" id="finalizar" value="finalizar">Finalizar os gráficos</button>
         </div>
     </center>
+    <!-- <div id="movimento">Contagem de movimentos: <label id="mov">1</label></div> -->
     <div id="grafico" style="width: 100%; height: 500px;"></div>
     
     <script src="../js/script.js"></script>
